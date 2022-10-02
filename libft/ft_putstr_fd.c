@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/02 23:37:01 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/19 17:36:27 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/09/19 17:43:00 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-#include "stdio.h"
-
-#include "unistd.h"
-
-/*int	ft_printf(const char *, ...)
+void	ft_putstr_fd(char *s, int fd)
 {
-*/
-
-void	ft_printf_unsigned_int(unsigned int n);
-
-
-int	main(void)
-{
-	unsigned int	ui;
-
-	ui = 4294967295;
-
-	printf("%u", ui);
-	printf("\n");
-	ft_printf_unsigned_int(ui);
-	return (0);
+	while (*s)
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
 }

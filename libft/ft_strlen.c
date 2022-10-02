@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/02 23:37:01 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/14 17:03:23 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/09/19 01:52:42 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-#include "stdio.h"
-
-#include "unistd.h"
-
-/*int	ft_printf(const char *, ...)
+size_t	ft_strlen(const char *s)
 {
-*/
+	size_t	size;
 
-void	ft_printf_unsigned_int(unsigned int n);
-
-
-int	main(void)
-{
-	unsigned int	ui;
-
-	ui = 4294967295;
-
-	printf("%u", ui);
-	printf("\n");
-	ft_printf_unsigned_int(ui);
-	return (0);
+	size = 0;
+	while (s[size])
+		size++;
+	return (size);
 }

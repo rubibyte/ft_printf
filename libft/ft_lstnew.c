@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/02 23:37:01 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/25 19:17:39 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/09/26 18:42:42 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-#include "stdio.h"
-
-#include "unistd.h"
-
-/*int	ft_printf(const char *, ...)
+t_list	*ft_lstnew(void *content)
 {
-*/
+	t_list	*new;
 
-void	ft_printf_unsigned_int(unsigned int n);
-
-
-int	main(void)
-{
-	unsigned int	ui;
-
-	ui = 4294967295;
-
-	printf("%u", ui);
-	printf("\n");
-	ft_printf_unsigned_int(ui);
-	return (0);
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	(*new).next = NULL;
+	return (new);
 }

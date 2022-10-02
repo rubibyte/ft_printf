@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/02 23:37:01 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/15 20:04:05 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/09/19 01:54:33 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-#include "stdio.h"
-
-#include "unistd.h"
-
-/*int	ft_printf(const char *, ...)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-*/
+	size_t	i;
 
-void	ft_printf_unsigned_int(unsigned int n);
-
-
-int	main(void)
-{
-	unsigned int	ui;
-
-	ui = 4294967295;
-
-	printf("%u", ui);
-	printf("\n");
-	ft_printf_unsigned_int(ui);
-	return (0);
+	i = 0;
+	if (!s1 && !s2)
+		return (0);
+	if (n == 0)
+		return (0);
+	n--;
+	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n)
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/02 23:37:01 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/15 15:45:00 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/09/23 17:20:18 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-#include "stdio.h"
-
-#include "unistd.h"
-
-/*int	ft_printf(const char *, ...)
+char	*ft_strchr(const char *s, int c)
 {
-*/
+	int	i;
 
-void	ft_printf_unsigned_int(unsigned int n);
-
-
-int	main(void)
-{
-	unsigned int	ui;
-
-	ui = 4294967295;
-
-	printf("%u", ui);
-	printf("\n");
-	ft_printf_unsigned_int(ui);
-	return (0);
+	i = -1;
+	while (s[++i])
+		if (s[i] == (unsigned char)c)
+			return ((char *) &s[i]);
+	if (!(unsigned char)c)
+		return ((char *) &s[i]);
+	return (NULL);
 }

@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/02 23:37:01 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/19 18:50:53 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/09/23 19:52:54 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-#include "stdio.h"
-
-#include "unistd.h"
-
-/*int	ft_printf(const char *, ...)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-*/
+	char			*maped_str;
+	unsigned int	i;
 
-void	ft_printf_unsigned_int(unsigned int n);
-
-
-int	main(void)
-{
-	unsigned int	ui;
-
-	ui = 4294967295;
-
-	printf("%u", ui);
-	printf("\n");
-	ft_printf_unsigned_int(ui);
-	return (0);
+	maped_str = (char *)malloc(ft_strlen(s) * sizeof(char) + 1);
+	if (!maped_str)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		maped_str[i] = f(i, s[i]);
+		i++;
+	}
+	maped_str[i] = '\0';
+	return (maped_str);
 }
