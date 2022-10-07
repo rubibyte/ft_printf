@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/07 21:47:38 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/10/07 21:06:13 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/10/07 21:46:08 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printflib.h"
+#ifndef FT_PRINTFLIB_H
+# define FT_PRINTFLIB_H
 
-#include <stdio.h>
+# include <unistd.h>
+# include <stdarg.h>
 
-/*int	ft_printf(const char *str, ...)
-{
-	%#p
-*/
-int	main(void)
-{
-	char	a;
-	char	*ptr;
+# include "libft/libft.h"
 
-	a = 'h';
-	ptr = &a;
+void	ft_printf_int(int n);
 
-	printf("%p", ptr);
-	printf("\n");
-//	ft_printf_void_ptr_hex(ptr);
-	printf("%d, %i\n", 10.2, 10.2);
-	return (0);
-}
+void	ft_printf_str(char *str);
+
+void	ft_printf_unint_base(unsigned int n, char *base);
+
+void	ft_printf_void_ptr_hex(void *ptr);
+
+#endif
