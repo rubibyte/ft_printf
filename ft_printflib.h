@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:06:13 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/07 21:46:08 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/10/14 19:10:26 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 # include "libft/libft.h"
 
-void	ft_printf_int(int n);
+int	ft_printf_int(int n);
 
-void	ft_printf_str(char *str);
+int	ft_printf_str(char *str);
 
-void	ft_printf_unint_base(unsigned int n, char *base);
+int	ft_printf_unint_base(unsigned int n, char *base);
 
-void	ft_printf_void_ptr_hex(void *ptr);
+int	ft_printf_void_ptr_hex(void *ptr);
 
 #endif

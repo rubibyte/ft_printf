@@ -6,15 +6,16 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:06:30 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/05 20:02:28 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/10/13 00:16:21 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 
-void	ft_printf_int(int n)
+int	ft_printf_int(int n)
 {
 	char	c;
+	int		n_char_wr;
 
 	if (n == -2147483648)
 		write(1, "-2147483648", 11);
@@ -28,11 +29,14 @@ void	ft_printf_int(int n)
 	else if (n <= 9)
 	{
 		c = n + '0';
-		write(1, &c, 1);
+		n_char_wr = write(1, &c, 1);
+		if (n_char_wr < 0)
+			return (n_char_wr);
 	}
 	else
 	{
 		ft_printf_int(n / 10);
 		ft_printf_int(n % 10);
 	}
+	return (0);
 }

@@ -6,13 +6,27 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:02:24 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/05 20:04:52 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/10/14 20:14:16 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 
-void	ft_printf_str(char *str)
+int	ft_printf_str(char *str)
 {
-		write(1, str, ft_strlen(str));
+	int	n_char_wr;
+	int	i;
+	int	temp_n;
+
+	i = -1;
+	n_char_wr = 0;
+	while (str[++i])
+	{
+		temp_n = (int)write(1, &str[i], 1);
+		if (temp_n < 0)
+			return temp_n;
+		n_char_wr += temp_n;
+	}
+	return (n_char_wr);
+	
 }
