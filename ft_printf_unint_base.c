@@ -14,7 +14,23 @@
 
 #include <stdio.h>
 
+char	*ft_uitoa_base(unsigned int n, char *base);
+
 int	ft_printf_unint_base(unsigned int n, char *base)
+{
+	char	*num_str;
+	int		n_char_wr;
+
+	num_str = ft_uitoa_base(n, base);
+	n_char_wr = (int)write(1, num_str, ft_strlen(num_str));
+	free(num_str);
+	num_str = NULL;
+	return (n_char_wr);
+}
+
+
+
+/*int	ft_printf_unint_base(unsigned int n, char *base)
 {
 	char	c;
 	int		n_char_wr;
@@ -34,7 +50,7 @@ int	ft_printf_unint_base(unsigned int n, char *base)
 		ft_printf_unint_base(n % ft_strlen(base), base);
 	}
 	return (0);
-}
+}*/
 
 
 
