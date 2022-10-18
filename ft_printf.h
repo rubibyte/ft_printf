@@ -6,15 +6,17 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:06:13 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/18 02:40:32 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:25:19 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTFLIB_H
-# define FT_PRINTFLIB_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdarg.h>
-# include "libft.h"
+# include "libft/includes/libft.h"
+
+# define UNINT unsigned int
 
 char	*ft_lgtoa_base(size_t n, char *base);
 
@@ -32,6 +34,6 @@ int		ft_printf_unint_base(unsigned int n, char *base);
 
 int		ft_printf_void_ptr_hex(void *ptr);
 
-int		ft_printf(const char *format, ...);
+int		ft_printf(const char *fmt, ...);
 
 #endif

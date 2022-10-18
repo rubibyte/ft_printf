@@ -6,11 +6,11 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 20:19:02 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/17 20:31:20 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:39:21 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printflib.h"
+#include "ft_printf.h"
 
 char	*ft_uitoa_base(unsigned int n, char *base)
 {
@@ -18,7 +18,7 @@ char	*ft_uitoa_base(unsigned int n, char *base)
 	size_t	len;
 
 	if ((int)n < 0)
-		ft_uitoa_base(4294967296 + n, base);
+		n = 4294967296 + n;
 	len = ft_nbrlen_base(n, base);
 	num_str = (char *)malloc(len * sizeof(char) + 1);
 	if (!num_str)

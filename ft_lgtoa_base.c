@@ -6,16 +6,16 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 20:22:06 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/17 20:28:30 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:37:49 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printflib.h"
+#include "ft_printf.h"
 
 char	*ft_lgtoa_base(size_t n, char *base)
 {
 	char 	*num_str;
-	size_t	len;
+	size_t	len; //try unsigned long, print adress in ptr hex, if void * NULL = "0x0"
 
 	len = ft_nbrlen_base(n, base);
 	num_str = (char *)malloc(len * sizeof(char) + 1);
