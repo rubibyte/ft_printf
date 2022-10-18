@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_nbrlen_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 16:02:09 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/09/20 17:21:49 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/10/17 20:16:06 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/10/17 20:29:31 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
 
-int	ft_isalnum(int c)
+size_t	ft_nbrlen_base(long n, char *base)
 {
-	if (ft_isalpha(c) || ft_isdigit(c))
-		return (TRUE);
-	return (FALSE);
+	size_t	size;
+
+	if (n == 0)
+		return (1);
+	size = 0;
+//	if (n < 0)
+//		size++; not necessary in when using unsigned but don't delete to be reliable
+	while (n)
+	{
+		size++;
+		n /= ft_strlen(base);
+	}
+	return (size);
 }

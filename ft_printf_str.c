@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:02:24 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/14 20:14:16 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/10/17 20:14:09 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ int	ft_printf_str(char *str)
 			return temp_n;
 		n_char_wr += temp_n;
 	}
-	return (n_char_wr);
-	
+	return (n_char_wr);	
 }

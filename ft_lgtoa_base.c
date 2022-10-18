@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_ltoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 20:38:08 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/09/29 20:50:30 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/10/17 20:22:06 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/10/17 20:28:30 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+char	*ft_lgtoa_base(size_t n, char *base)
 {
-	if (!lst)
-		return ;
-	while (lst)
+	char 	*num_str;
+	size_t	len;
+
+	len = ft_nbrlen_base(n, base);
+	num_str = (char *)malloc(len * sizeof(char) + 1);
+	if (!num_str)
+		return (NULL);
+	num_str[len] = '\0';
+	while (n)
 	{
-		f(lst->content);
-		lst = lst->next;
+		--len;
+		num_str[len] = base[n % ft_strlen(base)];
+		n /= ft_strlen(base);
 	}
+	return (num_str);
 }

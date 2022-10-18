@@ -6,13 +6,11 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/14 23:31:04 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/10/17 20:13:27 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printflib.h"
-
-#include <stdio.h>
 
 static int	ft_check_type(va_list args, const char *format, int i)
 {
@@ -43,7 +41,6 @@ static int	ft_check_type(va_list args, const char *format, int i)
 	return (n_char_wr);
 }
 
-
 int	ft_printf(const char *format, ...)
 {
 	int	i;
@@ -70,7 +67,7 @@ int	ft_printf(const char *format, ...)
 	return (n_char_wr);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int	err_printf;
 	int	err_ft_printf;
@@ -86,4 +83,4 @@ int	main(void)
 
 	printf("\n\nreturn printf: %d\nreturn ft_printf: %d", err_printf, err_ft_printf);
 	return (0);
-}
+}*/
