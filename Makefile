@@ -42,21 +42,23 @@ DEP_FLAGS = -MMD -MP
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(LIBFT)
 	ar -rcs $(NAME) $(OBJS) $(LIBFT)
 
 -include $(DEPS)
 
 
-$(LIBFT):
+$(LIBFT): #depende de libft_objs que a su vez dependen de libft_srcs y libft.h
 	make -C Libft/
 
 
 clean:
+	#make clean -C Libft/
 	$(RM) $(OBJS)
 	$(RM) $(DEPS)
 
 fclean: clean
+	#make flcean -C Libft/
 	$(RM) $(NAME)
 
 re: fclean all
