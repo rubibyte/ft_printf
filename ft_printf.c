@@ -16,7 +16,6 @@ static int	ft_check_type(va_list args, const char *format, int i)
 {
 	int	n_char_wr;
 	char	c;
-	int		len;
 	
 	n_char_wr = 0;
 	if (format[i] == 'c')

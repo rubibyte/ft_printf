@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_unint_base.c                             :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 20:49:01 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/17 20:21:30 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/15 15:21:29 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/09/19 01:58:30 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printflib.h"
+#include "libft.h"
 
-int	ft_printf_unint_base(unsigned int n, char *base)
+int	ft_toupper(int c)
 {
-	char	*num_str;
-	int		n_char_wr;
-
-	num_str = ft_uitoa_base(n, base);
-	n_char_wr = (int)write(1, num_str, ft_strlen(num_str));
-	free(num_str);
-	num_str = NULL;
-	return (n_char_wr);
+	if (c > 96 && c < 123)
+		return (c - 32);
+	return (c);
 }

@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_unint_base.c                             :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 20:49:01 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/17 20:21:30 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/22 14:01:44 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/10/01 00:13:40 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printflib.h"
+#include "libft.h"
 
-int	ft_printf_unint_base(unsigned int n, char *base)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*num_str;
-	int		n_char_wr;
+	size_t	len;
+	size_t	start;
 
-	num_str = ft_uitoa_base(n, base);
-	n_char_wr = (int)write(1, num_str, ft_strlen(num_str));
-	free(num_str);
-	num_str = NULL;
-	return (n_char_wr);
+	if (!s1 || !set)
+		return (NULL);
+	start = 0;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	len = ft_strlen(s1) - 1;
+	while (ft_strchr(set, s1[len]) && len)
+		len--;
+	return (ft_substr(s1, start, len - start + 1));
 }

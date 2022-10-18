@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_unint_base.c                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 20:49:01 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/17 20:21:30 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/16 18:57:32 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/09/30 23:35:38 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printflib.h"
+#include "libft.h"
 
-int	ft_printf_unint_base(unsigned int n, char *base)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char	*num_str;
-	int		n_char_wr;
+	char	*buffer;
+	size_t	i;
 
-	num_str = ft_uitoa_base(n, base);
-	n_char_wr = (int)write(1, num_str, ft_strlen(num_str));
-	free(num_str);
-	num_str = NULL;
-	return (n_char_wr);
+	buffer = (char *)malloc(count * size);
+	i = 0;
+	if (!buffer)
+		return (NULL);
+	while (i < count * size)
+		buffer[i++] = 0;
+	return ((void *)buffer);
 }

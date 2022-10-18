@@ -13,10 +13,8 @@
 #ifndef FT_PRINTFLIB_H
 # define FT_PRINTFLIB_H
 
-# include <unistd.h>
 # include <stdarg.h>
-
-# include "libft/libft.h"
+# include "libft.h"
 
 char	*ft_lgtoa_base(size_t n, char *base);
 

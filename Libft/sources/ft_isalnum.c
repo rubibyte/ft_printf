@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_unint_base.c                             :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 20:49:01 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/17 20:21:30 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/14 16:02:09 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/09/20 17:21:49 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printflib.h"
+#include "libft.h"
 
-int	ft_printf_unint_base(unsigned int n, char *base)
+int	ft_isalnum(int c)
 {
-	char	*num_str;
-	int		n_char_wr;
-
-	num_str = ft_uitoa_base(n, base);
-	n_char_wr = (int)write(1, num_str, ft_strlen(num_str));
-	free(num_str);
-	num_str = NULL;
-	return (n_char_wr);
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (TRUE);
+	return (FALSE);
 }

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_unint_base.c                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 20:49:01 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/17 20:21:30 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/25 19:17:39 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/09/26 18:42:42 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printflib.h"
+#include "libft.h"
 
-int	ft_printf_unint_base(unsigned int n, char *base)
+t_list	*ft_lstnew(void *content)
 {
-	char	*num_str;
-	int		n_char_wr;
+	t_list	*new;
 
-	num_str = ft_uitoa_base(n, base);
-	n_char_wr = (int)write(1, num_str, ft_strlen(num_str));
-	free(num_str);
-	num_str = NULL;
-	return (n_char_wr);
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	(*new).next = NULL;
+	return (new);
 }

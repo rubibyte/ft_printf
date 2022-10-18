@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_unint_base.c                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 20:49:01 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/17 20:21:30 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/16 19:50:43 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/10/01 18:48:19 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printflib.h"
+#include "libft.h"
 
-int	ft_printf_unint_base(unsigned int n, char *base)
+char	*ft_strdup(const char *s1)
 {
-	char	*num_str;
-	int		n_char_wr;
+	char	*s1_cpy;
+	int		i;
 
-	num_str = ft_uitoa_base(n, base);
-	n_char_wr = (int)write(1, num_str, ft_strlen(num_str));
-	free(num_str);
-	num_str = NULL;
-	return (n_char_wr);
-}
+	s1_cpy = (char *)malloc(ft_strlen(s1) * sizeof(char) + 1);
+	if (!s1_cpy)
+		return (NULL);
+	i = -1;
+	while (s1[++i])
+		s1_cpy[i] = s1[i];
+	s1_cpy[i] = '\0';
+	return (s1_cpy);
+}	

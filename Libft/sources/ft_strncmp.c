@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_unint_base.c                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 20:49:01 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/17 20:21:30 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/15 20:04:05 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/09/19 01:54:33 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printflib.h"
+#include "libft.h"
 
-int	ft_printf_unint_base(unsigned int n, char *base)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*num_str;
-	int		n_char_wr;
+	size_t	i;
 
-	num_str = ft_uitoa_base(n, base);
-	n_char_wr = (int)write(1, num_str, ft_strlen(num_str));
-	free(num_str);
-	num_str = NULL;
-	return (n_char_wr);
+	i = 0;
+	if (!s1 && !s2)
+		return (0);
+	if (n == 0)
+		return (0);
+	n--;
+	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n)
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

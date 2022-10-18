@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_unint_base.c                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 20:49:01 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/17 20:21:30 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/22 13:34:46 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/09/22 13:52:51 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printflib.h"
+#include "libft.h"
 
-int	ft_printf_unint_base(unsigned int n, char *base)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*num_str;
-	int		n_char_wr;
+	char			*new_s;
+	unsigned int	i;
+	unsigned int	j;
 
-	num_str = ft_uitoa_base(n, base);
-	n_char_wr = (int)write(1, num_str, ft_strlen(num_str));
-	free(num_str);
-	num_str = NULL;
-	return (n_char_wr);
+	new_s = (char *)malloc((ft_strlen(s1) + ft_strlen(s2)) * sizeof(char) + 1);
+	if (!new_s)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		new_s[i] = (char)s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		new_s[i + j] = (char)s2[j];
+		j++;
+	}
+	new_s[i + j] = '\0';
+	return (new_s);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "ft_printflib.h"
 
 size_t	ft_nbrlen(long n)
 {

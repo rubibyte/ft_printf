@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_unint_base.c                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 20:49:01 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/17 20:21:30 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/15 14:43:33 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/09/19 01:44:36 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printflib.h"
+#include "libft.h"
 
-int	ft_printf_unint_base(unsigned int n, char *base)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	char	*num_str;
-	int		n_char_wr;
+	size_t	dst_len;
+	size_t	i;
 
-	num_str = ft_uitoa_base(n, base);
-	n_char_wr = (int)write(1, num_str, ft_strlen(num_str));
-	free(num_str);
-	num_str = NULL;
-	return (n_char_wr);
+	dst_len = ft_strlen(dst);
+	i = 0;
+	if (dstsize <= dst_len)
+		return (dstsize + ft_strlen(src));
+	while (src[i] && (dst_len + 1 < dstsize))
+	{
+		dst[dst_len] = src[i];
+		i++;
+		dst_len++;
+	}
+	dst[dst_len] = '\0';
+	return (ft_strlen(dst) + ft_strlen(&src[i]));
 }

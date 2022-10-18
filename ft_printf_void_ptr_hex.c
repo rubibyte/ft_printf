@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "ft_printflib.h"
 
 int	ft_printf_void_ptr_hex(void *ptr)
 {

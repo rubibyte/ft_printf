@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_unint_base.c                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 20:49:01 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/17 20:21:30 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/19 18:50:53 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/09/23 19:52:54 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printflib.h"
+#include "libft.h"
 
-int	ft_printf_unint_base(unsigned int n, char *base)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*num_str;
-	int		n_char_wr;
+	char			*maped_str;
+	unsigned int	i;
 
-	num_str = ft_uitoa_base(n, base);
-	n_char_wr = (int)write(1, num_str, ft_strlen(num_str));
-	free(num_str);
-	num_str = NULL;
-	return (n_char_wr);
+	maped_str = (char *)malloc(ft_strlen(s) * sizeof(char) + 1);
+	if (!maped_str)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		maped_str[i] = f(i, s[i]);
+		i++;
+	}
+	maped_str[i] = '\0';
+	return (maped_str);
 }

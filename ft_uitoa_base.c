@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "ft_printflib.h"
 
 char	*ft_uitoa_base(unsigned int n, char *base)
 {
 	char	*num_str;
 	size_t	len;
 
-	if (n < 0)
+	if ((int)n < 0)
 		ft_uitoa_base(4294967296 + n, base);
 	len = ft_nbrlen_base(n, base);
 	num_str = (char *)malloc(len * sizeof(char) + 1);

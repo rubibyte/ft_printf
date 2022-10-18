@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbrlen_base.c                                   :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 20:16:06 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/17 20:29:31 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/16 17:33:13 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/09/19 01:18:43 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printflib.h"
+#include "libft.h"
 
-size_t	ft_nbrlen_base(long n, char *base)
+int	ft_atoi(const char *str)
 {
-	size_t	size;
+	unsigned int	result;
+	int				negative;
+	unsigned int	i;
 
-	if (n == 0)
-		return (1);
-	size = 0;
-	if (n < 0)
-		size++; //not necessary in when using unsigned but don't delete to be reliable
-	while (n)
+	i = 0;
+	result = 0;
+	negative = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == 32))
+		i++;
+	if (str[i] == '+')
+		i++;
+	else if (str[i] == '-')
 	{
-		size++;
-		n /= ft_strlen(base);
+		negative *= -1;
+		i++;
 	}
-	return (size);
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - 48);
+		i++;
+	}
+	return (result * negative);
 }

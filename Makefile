@@ -10,23 +10,26 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = ft_printflib.a
 
-OBJ_DIR = objects
-
-
-
-SRC = 
-
-OBJS = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
-
-DEPS = $(addsuffix .d, $(basename $(OBJS)))
+LIBFT = Libft/libft.a
 
 
+SRC = ft_lgtoa_base.c	ft_nbrlen_base.c	ft_printf_int.c	\
+	  ft_printf_unint_base.c	ft_nbrlen.c  ft_printf.c	\
+	  ft_printf_str.c	ft_printf_void_ptr_hex.c	ft_uitoa_base.c 
 
-RM = rm -rf
 
-INCLUDE = -I ./
+OBJS = $(SRC:.c=.o)
+
+DEPS = $(SRC:.c=.d)
+
+
+MAKEFILE = Makefile
+
+RM = rm -f
+
+INCLUDE = -I ./ -I Libft/includes/
 
 CFLAGS = -Wall -Wextra -Werror -W #-Ofast -O3 -fsanitize=address -g3
 
@@ -34,45 +37,29 @@ DEP_FLAGS = -MMD -MP
 
 
 
-$(OBJ_DIR)/%.o: %.c Makefile
-	@$(CC) $(CFLAGS) $(DEP_FLAGS) $(INCLUDE) -c $< -o $@
-
-
+%.o: %.c $(MAKEFILE)
+	$(CC) $(CFLAGS) $(DEP_FLAGS) $(INCLUDE) -c $< -o $@
 
 all: $(NAME)
 
-
 $(NAME): $(OBJS)
-	@ar -rcs $(NAME) $(OBJS)
-	@echo "-> Objects and dependencies created."
-	@echo "-> Library created."
+	ar -rcs $(NAME) $(OBJS) $(LIBFT)
 
 -include $(DEPS)
 
 
-
-$(OBJS): | $(OBJ_DIR)
-
-
-
-$(OBJ_DIR):
-	@mkdir $@
-	@echo "-> Objects directory created."
+$(LIBFT):
+	make -C Libft/
 
 
 clean:
-	@$(RM) $(OBJ_DIR)
-	@echo "-> Objects directory deleted successfully."
-
-
+	$(RM) $(OBJS)
+	$(RM) $(DEPS)
 
 fclean: clean
-	@$(RM) $(NAME) $(BONUS)
-	@echo "-> All files cleaned!"
-
-
+	$(RM) $(NAME)
 
 re: fclean all
 
 
-.PHONY: all bonus clean fclean re bonus
+.PHONY: all clean fclean re bonus

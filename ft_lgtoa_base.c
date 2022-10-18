@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "ft_printflib.h"
 
 char	*ft_lgtoa_base(size_t n, char *base)
 {
