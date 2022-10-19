@@ -19,7 +19,7 @@ LIBFT_DIR = libft
 
 OBJ_DIR = obj
 
-SRC = ft_lgtoa_base.c	ft_nbrlen_base.c	ft_printf_int.c	\
+SRC = ft_adresstoa_base.c	ft_nbrlen_base.c	ft_printf_int.c	\
 	  ft_printf_unint_base.c	ft_nbrlen.c  ft_printf.c	\
 	  ft_printf_str.c	ft_printf_void_ptr_hex.c	ft_uitoa_base.c 
 

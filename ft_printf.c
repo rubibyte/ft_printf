@@ -25,7 +25,7 @@ static int	ft_check_type(va_list args, const char *fmt, int i)
 	if (fmt[i] == 'c')
 	{
 		c = va_arg(args, int);
-		n_wr += (int)write(1, &c, 1);
+		n_wr += (int)write(STDOUT_FILENO, &c, 1);
 	}
 	else if (fmt[i] == '%')
 		n_wr += (int)write(1, "%", 1);
@@ -36,11 +36,11 @@ static int	ft_check_type(va_list args, const char *fmt, int i)
 	else if (fmt[i] == 'd' || fmt[i] == 'i')
 		n_wr += ft_printf_int(va_arg(args, int));
 	else if (fmt[i] == 'u')
-		n_wr += ft_printf_unint_base(va_arg(args, UNINT), "0123456789");
+		n_wr += ft_printf_unint_base(va_arg(args, UNINT), DEC);
 	else if (fmt[i] == 'x')
-		n_wr += ft_printf_unint_base(va_arg(args, UNINT), "0123456789abcdef");
+		n_wr += ft_printf_unint_base(va_arg(args, UNINT), HEX_LC);
 	else if (fmt[i] == 'X')
-		n_wr += ft_printf_unint_base(va_arg(args, UNINT), "0123456789ABCDEF");
+		n_wr += ft_printf_unint_base(va_arg(args, UNINT), HEX_UC);
 	return (n_wr);
 }
 
@@ -60,7 +60,7 @@ int	ft_printf(const char *fmt, ...)
 		if (fmt[i] == '%')
 			temp_n = ft_check_type(args, fmt, ++i);
 		else
-			temp_n = (int)write(1, &fmt[i], 1);
+			temp_n = (int)write(STDOUT_FILENO, &fmt[i], 1);
 		if (temp_n < 0)
 			return (temp_n);
 		n_wr += temp_n;
@@ -72,12 +72,12 @@ int	ft_printf(const char *fmt, ...)
 
 /*int	main(void)
 {
-	printf(" %p %p \n", LONG_MIN, LONG_MAX);
+	printf(" %p %p \n\n", LONG_MIN, LONG_MAX);
 
-	ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
+	ft_printf(" %p %p \n\n", LONG_MIN, LONG_MAX);
 	return (0);
-}*/
-
+}
+*/
 
 
 

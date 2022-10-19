@@ -18,8 +18,9 @@ int	ft_printf_unint_base(unsigned int n, char *base)
 	int		n_wr;
 
 	num_str = ft_uitoa_base(n, base);
-	n_wr = (int)write(1, num_str, ft_strlen(num_str));
+	n_wr = ft_printf_str(num_str);
+	//n_wr = (int)write(1, num_str, ft_strlen(num_str));
 	free(num_str);
-	num_str = NULL;
+	//num_str = NULL;
 	return (n_wr);
 }

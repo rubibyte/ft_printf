@@ -18,16 +18,18 @@ int	ft_printf_void_ptr_hex(void *ptr)
 	char	*num_str;
 	int		temp_n;
 
-	n_wr = (int)write(1, "0x", 2);
+	//n_wr = (int)write(STDOUT_FILENO, "0x", 2);
+	ft_printf_str("0x");
 	if (n_wr < 0)
 		return (n_wr);
-	num_str = ft_lgtoa_base((size_t)ptr, "0123456789abcdef");
+	num_str = ft_adresstoa_base((size_t)ptr, HEX_LC);
 	//temp_n = (int)write(1, num_str, ft_strlen(num_str));
 	temp_n = ft_printf_str(num_str);
+	free(num_str);
 	if (temp_n < 0)
 		return (temp_n);
-	free(num_str);
-	num_str = NULL;
+	//free(num_str);
+	//num_str = NULL;
 	n_wr += temp_n;
 	return (n_wr);
 }

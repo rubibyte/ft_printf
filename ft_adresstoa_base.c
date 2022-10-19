@@ -12,15 +12,32 @@
 
 #include "ft_printf.h"
 
-char	*ft_lgtoa_base(size_t n, char *base)
+static size_t	ft_adresslen_base(size_t n, char *base)
+{
+	size_t	size;
+
+	if (n == 0)
+		return (1);
+	size = 0;
+	while (n)
+	{
+		size++;
+		n /= ft_strlen(base);
+	}
+	return (size);
+}
+
+char	*ft_adresstoa_base(size_t n, char *base)
 {
 	char 	*num_str;
-	size_t	len; //try unsigned long, print adress in ptr hex, if void * NULL = "0x0"
+	size_t	len;
 
-	len = ft_nbrlen_base(n, base);
+	len = ft_adresslen_base(n, base);
 	num_str = (char *)malloc(len * sizeof(char) + 1);
 	if (!num_str)
 		return (NULL);
+	if (n == 0)
+		num_str[0] = '0';
 	num_str[len] = '\0';
 	while (n)
 	{

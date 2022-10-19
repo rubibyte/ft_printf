@@ -24,7 +24,7 @@ int	ft_printf_str(char *str)
 		str = (char *)"(null)";
 	while (str[++i])
 	{
-		temp_n = (int)write(1, &str[i], 1);
+		temp_n = (int)write(STDOUT_FILENO, &str[i], 1);
 		if (temp_n < 0)
 			return (temp_n);
 		n_wr += temp_n;
