@@ -12,11 +12,11 @@
 
 #include "ft_printf.h"
 
-int	ft_printf_str(char *str)
+ssize_t	ft_printf_str(char *str)
 {
-	int	n_wr;
-	int	i;
-	int	temp_n;
+	int		i;
+	ssize_t	n_wr;
+	ssize_t	temp_n;
 
 	i = -1;
 	n_wr = 0;
@@ -24,7 +24,7 @@ int	ft_printf_str(char *str)
 		str = (char *)"(null)";
 	while (str[++i])
 	{
-		temp_n = (int)write(STDOUT_FILENO, &str[i], 1);
+		temp_n = write(STDOUT_FILENO, &str[i], 1);
 		if (temp_n < 0)
 			return (temp_n);
 		n_wr += temp_n;

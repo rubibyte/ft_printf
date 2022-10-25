@@ -18,11 +18,13 @@ char	*ft_uitoa_base(unsigned int n, char *base)
 	size_t	len;
 
 	if ((int)n < 0)
-		n = 4294967296 + n;
+		n = n + UINT_MAX + 1;
 	len = ft_nbrlen_base(n, base);
 	num_str = (char *)malloc(len * sizeof(char) + 1);
 	if (!num_str)
 		return (NULL);
+	if (n == 0)
+		num_str[0] = '0';
 	num_str[len] = '\0';
 	while (n)
 	{

@@ -12,15 +12,15 @@
 
 #include "ft_printf.h"
 
-int	ft_printf_int(int n)
+ssize_t	ft_printf_int(int n)
 {
 	char	*num_str;
-	int		n_wr;
+	ssize_t	n_wr;
 
 	num_str = ft_itoa(n);
+	if (!num_str)
+		return (-1);
 	n_wr = ft_printf_str(num_str);
-	//n_wr = write(1, num_str, ft_strlen(num_str));
 	free(num_str);
-	//num_str = NULL;
 	return (n_wr);
 }

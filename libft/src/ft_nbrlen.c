@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 20:38:08 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/09/29 20:50:30 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/10/17 20:12:05 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/10/20 19:46:06 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+size_t	ft_nbrlen(long n)
 {
-	if (!lst)
-		return ;
-	while (lst)
+	size_t	size;
+
+	if (n == 0)
+		return (1);
+	size = 0;
+	if (n < 0)
+		size++;
+	while (n)
 	{
-		f(lst->content);
-		lst = lst->next;
+		size++;
+		n /= 10;
 	}
+	return (size);
 }

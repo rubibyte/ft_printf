@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 21:03:48 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/09/30 17:48:17 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/09/19 19:35:30 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/10/20 19:50:28 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+char	*ft_itoa(int n)
 {
-	t_list	*new_lst;
-	t_list	*new_node;
-	void	*temp_content;
+	char	*num_str;
+	size_t	len;
 
-	if (!lst)
+	len = ft_nbrlen(n);
+	num_str = (char *)malloc(len * sizeof(char) + 1);
+	if (!num_str)
 		return (NULL);
-	new_lst = NULL;
-	while (lst)
-	{	
-		temp_content = f(lst->content);
-		new_node = ft_lstnew(temp_content);
-		if (!new_node)
-		{
-			del(temp_content);
-			ft_lstclear(&new_lst, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&new_lst, new_node);
-		lst = lst->next;
+	num_str[len] = '\0';
+	if (n < 0)
+		num_str[0] = '-';
+	else if (n == 0)
+		num_str[0] = '0';
+	while (n)
+	{
+		--len;
+		num_str[len] = ft_absval(n % 10) + '0';
+		n /= 10;
 	}
-	return (new_lst);
+	return (num_str);
 }

@@ -12,23 +12,19 @@
 
 #include "ft_printf.h"
 
-//#include <limits.h>
-
-//#include <stdio.h>
-
 static int	ft_check_type(va_list args, const char *fmt, int i)
 {
-	int		n_wr;
 	char	c;
+	ssize_t	n_wr;
 
 	n_wr = 0;
 	if (fmt[i] == 'c')
 	{
 		c = va_arg(args, int);
-		n_wr += (int)write(STDOUT_FILENO, &c, 1);
+		n_wr += write(STDOUT_FILENO, &c, 1);
 	}
 	else if (fmt[i] == '%')
-		n_wr += (int)write(1, "%", 1);
+		n_wr += write(1, "%", 1);
 	else if (fmt[i] == 's')
 		n_wr += ft_printf_str(va_arg(args, char *));
 	else if (fmt[i] == 'p')
@@ -36,20 +32,20 @@ static int	ft_check_type(va_list args, const char *fmt, int i)
 	else if (fmt[i] == 'd' || fmt[i] == 'i')
 		n_wr += ft_printf_int(va_arg(args, int));
 	else if (fmt[i] == 'u')
-		n_wr += ft_printf_unint_base(va_arg(args, UNINT), DEC);
+		n_wr += ft_printf_unint_base(va_arg(args, UINT), DEC);
 	else if (fmt[i] == 'x')
-		n_wr += ft_printf_unint_base(va_arg(args, UNINT), HEX_LC);
+		n_wr += ft_printf_unint_base(va_arg(args, UINT), HEX_LC);
 	else if (fmt[i] == 'X')
-		n_wr += ft_printf_unint_base(va_arg(args, UNINT), HEX_UC);
-	return (n_wr);
+		n_wr += ft_printf_unint_base(va_arg(args, UINT), HEX_UC);
+	return ((int)n_wr);
 }
 
 int	ft_printf(const char *fmt, ...)
 {
 	int		i;
 	int		n_wr;
-	va_list	args;
 	int		temp_n;
+	va_list	args;
 
 	i = 0;
 	n_wr = 0;
@@ -69,38 +65,3 @@ int	ft_printf(const char *fmt, ...)
 	va_end(args);
 	return (n_wr);
 }
-
-/*int	main(void)
-{
-	printf(" %p %p \n\n", LONG_MIN, LONG_MAX);
-
-	ft_printf(" %p %p \n\n", LONG_MIN, LONG_MAX);
-	return (0);
-}
-*/
-
-
-
-
-/*int	main(void)
-{
-	int	err_printf;
-	int	err_ft_printf;
-	void	*ptr;
-	char	c;
-
-	c = 'h';
-	ptr = &c;
-
-	err_printf = printf("asd%%fa char: %c, str: %s, void *: %p, decimal: %d,\
-	 addindex: %i, unsigned decimal: %u, hex lowercase: %x, hex uppercase: \
-	%X\n",'a', "frank%%%%", ptr, 123456, 654321, -123, 3456, -3456);
-
-	err_ft_printf = ft_printf("asd%%fa char: %c, str: %s, void *: %p, decimal: \
-	%d, integer: %i, unsigned decimal: %u, hex lowercase: %x, \
-	uppercase: %X\n", 'b', "frank%%%%", ptr, 123456, 654321, -123, 3456, -3456);
-
-	printf("\n\nreturn printf: %d\nreturn ft_printf: %d",\
-	err_printf, err_ft_printf);
-	return (0);
-}*/
