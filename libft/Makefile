@@ -19,13 +19,11 @@ OBJ_DIR = .obj
 
 DEP_DIR = .dep
 
+
 #colors
-#N = no color text reset
-#G = green
-#R = red
-N = \033[0m
-G = \033[0;32m
-R = \033[0;31m
+NC = \033[0m
+GREEN = \033[0;32m
+RED = \033[0;31m
 
 
 SRC = ft_bzero.c		ft_isalpha.c	ft_isprint.c 	ft_memcpy.c \
@@ -70,20 +68,20 @@ all:
 
 $(NAME): $(OBJ)
 	@$(AR) $(NAME) $(OBJ)
-	@echo "$(G)[LIBFT]->Objects and dependencies created.$(N)"
-	@echo "$(G)[LIBFT]->Library created.$(N)"
+	@echo "${GREEN}[LIBFT]->Objects and dependencies created.${NC}"
+	@echo "${GREEN}[LIBFT]->Library created.${NC}"
 
 
 clean:
 	@$(RM_DIR) $(OBJ_DIR) $(DEP_DIR)
-	@echo "$(G)[LIBFT]->Objects directory $(R)deleted$(N) $(G)successfully.$(N)"
-	@echo "$(G)[LIBFT]->Dependencies directory $(R)deleted$(N) $(G)successfully.$(N)"
+	@echo "${GREEN}[LIBFT]->Objects directory ${RED}deleted${NC} ${GREEN}successfully.${NC}"
+	@echo "${GREEN}[LIBFT]->Dependencies directory ${RED}deleted${NC} ${GREEN}successfully.${NC}"
 
 
 fclean: 
 	@$(MAKE) clean
 	@$(RM) $(NAME)
-	@echo "$(G)[LIBFT]->All files cleaned!$(N)"
+	@echo "${GREEN}[LIBFT]->All files cleaned!${NC}"
 
 
 re: 

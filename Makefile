@@ -20,13 +20,23 @@ OBJ_DIR = .obj
 
 DEP_DIR = .dep
 
+
 #colors
-#N = no color text reset
-#G = green
-#R = red
-N = \033[0m
-G = \033[0;32m
-R = \033[0;31m
+NC = \033[0m
+BLACK = \033[0;30m 
+RED = \033[0;31m          
+GREEN = \033[0;32m
+YELLOW = \033[0;33m
+BLUE = \033[0;34m
+PURPLE = \033[0;35m
+CYAN = \033[0;36m         
+WHITE = \033[0;37m
+
+LINE = ${PURPLE}═══════════════════════════${NC}
+#╔═══════════════╗
+#	L I B F T
+#╚═══════════════╝
+
 
 SRC = ft_adresstoa_base.c		ft_nbrlen_base.c		ft_printf.c	\
 	  ft_printf_int.c			ft_printf_str.c 		ft_printf_unint_base.c \
@@ -54,37 +64,51 @@ RM_DIR = rm -rf
 
 
 $(OBJ_DIR)/%.o: ./%.c $(MAKEFILE)
-	mkdir -p $(dir $@) $(DEP_DIR)/
-	$(CC) $(CFLAGS) $(DEP_FLAGS) $(INCLUDE) -c $< -o $@
-	mv $(patsubst %.o, %.d, $@) $(DEP_DIR)/
+	@mkdir -p $(dir $@) $(DEP_DIR)/
+	@$(CC) $(CFLAGS) $(DEP_FLAGS) $(INCLUDE) -c $< -o $@
+	@mv $(patsubst %.o, %.d, $@) $(DEP_DIR)/
 
 
 all:
-#$(MAKE) -C $(LIBFT_DIR)
-#cp $(LIBFT_DIR)/$(LIBFT) $(NAME)
-	$(MAKE) $(NAME)
+	@$(MAKE) $(NAME)
 
 
 $(NAME): $(OBJ)
-	$(MAKE) -C $(LIBFT_DIR)
-	cp $(LIBFT_DIR)/$(LIBFT) $(NAME)
-	$(AR) $(NAME) $(OBJ)
+#---------------------- libft compilation --------------------------------
+	@echo "                          ${PURPLE}╔═══════════════╗${NC}"
+	@echo "$(LINE)   ${BLUE}L I B F T${NC}   $(LINE)"
+	@echo "                          ${PURPLE}╚═══════════════╝${NC}"
+	@$(MAKE) -C $(LIBFT_DIR)
+	@echo "$(LINE)$(LINE)${PURPLE}═══════════════${NC}"
+	@cp $(LIBFT_DIR)/$(LIBFT) $(NAME)
+#-------------------------------------------------------------------------
+	@$(AR) $(NAME) $(OBJ)
+	@echo "${GREEN}Objects and dependencies created.${NC}"
+	@echo "${GREEN}Library created.${NC}"
 
 
 clean:
-	$(MAKE) clean -C libft/
-	$(RM_DIR) $(OBJ_DIR) $(DEP_DIR)
+#------------------------ libft cleaning ---------------------------------
+	@echo "                          ${PURPLE}╔═══════════════╗${NC}"
+	@echo "$(LINE)   ${BLUE}L I B F T${NC}   $(LINE)"
+	@echo "                          ${PURPLE}╚═══════════════╝${NC}"
+	@$(MAKE) clean -C libft/
+	@echo "$(LINE)$(LINE)${PURPLE}═══════════════${NC}"
+#-------------------------------------------------------------------------
+	@$(RM_DIR) $(OBJ_DIR) $(DEP_DIR)
+	@echo "${GREEN}Objects directory${RED}deleted${NC} ${GREEN}successfully.${NC}"
+	@echo "${GREEN}Dependencies directory${RED}deleted${NC} ${GREEN}successfully.${NC}"
 
 
 fclean:
-	$(MAKE) fclean -C libft/
-	$(MAKE) clean
-	$(RM) $(NAME)
+	@$(MAKE) clean
+	@$(RM) $(NAME) $(LIBFT_DIR)/$(LIBFT)
+	@echo "${GREEN}All files cleaned!${NC}"
 
 
 re: 
-	$(MAKE) fclean 
-	$(MAKE) all
+	@$(MAKE) fclean 
+	@$(MAKE) all
 
 
 -include $(DEP)
