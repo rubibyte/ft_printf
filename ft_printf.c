@@ -32,11 +32,11 @@ static int	ft_check_type(va_list args, const char *fmt, int i)
 	else if (fmt[i] == 'd' || fmt[i] == 'i')
 		n_wr += ft_printf_int(va_arg(args, int));
 	else if (fmt[i] == 'u')
-		n_wr += ft_printf_unint_base(va_arg(args, UINT), DEC);
+		n_wr += ft_printf_uint_base(va_arg(args, UINT), DEC);
 	else if (fmt[i] == 'x')
-		n_wr += ft_printf_unint_base(va_arg(args, UINT), HEX_LC);
+		n_wr += ft_printf_uint_base(va_arg(args, UINT), HEX_LC);
 	else if (fmt[i] == 'X')
-		n_wr += ft_printf_unint_base(va_arg(args, UINT), HEX_UC);
+		n_wr += ft_printf_uint_base(va_arg(args, UINT), HEX_UC);
 	return ((int)n_wr);
 }
 

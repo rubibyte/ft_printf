@@ -21,7 +21,7 @@ ssize_t	ft_printf_void_ptr_hex(void *ptr)
 	n_wr = ft_printf_str("0x");
 	if (n_wr < 0)
 		return (n_wr);
-	num_str = ft_adresstoa_base((size_t)ptr, HEX_LC);
+	num_str = ft_unsignedtoa_base((size_t)ptr, HEX_LC);
 	if (!num_str)
 		return (-1);
 	temp_n = ft_printf_str(num_str);

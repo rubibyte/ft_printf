@@ -22,7 +22,7 @@
 # define HEX_LC			(char *)"0123456789abcdef"
 # define DEC            (char *)"0123456789"
 
-char	*ft_adresstoa_base(size_t n, char *base);
+char	*ft_unsignedtoa_base(size_t n, char *base);
 
 size_t	ft_nbrlen_base(long n, char *base);
 
@@ -32,7 +32,7 @@ ssize_t	ft_printf_int(int n);
 
 ssize_t	ft_printf_str(char *str);
 
-ssize_t	ft_printf_unint_base(unsigned int n, char *base);
+ssize_t	ft_printf_uint_base(unsigned int n, char *base);
 
 ssize_t	ft_printf_void_ptr_hex(void *ptr);
 

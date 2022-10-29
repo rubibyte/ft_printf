@@ -24,7 +24,7 @@ char	*ft_uitoa_base(unsigned int n, char *base)
 	if (!num_str)
 		return (NULL);
 	if (n == 0)
-		num_str[0] = '0';
+		num_str[0] = base[0];
 	num_str[len] = '\0';
 	while (n)
 	{

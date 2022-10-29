@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-ssize_t	ft_printf_unint_base(unsigned int n, char *base)
+ssize_t	ft_printf_uint_base(unsigned int n, char *base)
 {
 	char	*num_str;
 	ssize_t	n_wr;
