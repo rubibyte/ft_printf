@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static size_t	ft_unsignedlen_base(size_t n, char *base)
+size_t	ft_unsignedlen_base(size_t n, char *base)
 {
 	size_t	size;
 

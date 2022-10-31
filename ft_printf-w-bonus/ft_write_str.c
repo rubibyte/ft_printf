@@ -12,17 +12,17 @@
 
 #include "ft_printf.h"
 
-ssize_t	ft_printf_str(t_ftprintf arg_data, char *str)
+int	ft_write_str(t_ftprintf arg_data, char *str)
 {
 	int		i;
-	ssize_t	temp_n;
+	int	temp_n;
 
 	i = -1;
 	if (!str)
 		str = (char *)"(null)";
 	while (str[++i])
 	{
-		temp_n = write(STDOUT_FILENO, &str[i], 1);
+		temp_n = (int)write(STDOUT_FILENO, &str[i], 1);
 		if (temp_n < 0)
 			return (-1);
 		arg_data->n_printed += temp_n;

@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:06:13 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/24 00:06:19 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/10/31 18:07:38 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@
 typedef struct	s_ftprintf
 {
 	va_list	args;
-	int		sharp;
-	int		zero;
-	int		dash;
-	int		space;
-	int		sign;
+	_Bool	sharp;
+	_Bool	zero;
+	_Bool	dash;
+	_Bool	space;
+	_Bool	sign;
 	int		width;
-	int		dot;
-	int		asterisk;
+	_Bool	dot;
+	_Bool	asterisk;
 	int		precision;
 	int		percentage;
 	int		n_printed;	
@@ -45,11 +45,11 @@ char	*ft_uitoa_base(unsigned int n, char *base);
 
 ssize_t	ft_printf_int(int n);
 
-ssize_t	ft_printf_str(char *str);
+int	ft_write_str(char *str);
 
 ssize_t	ft_printf_uint_base(unsigned int n, char *base);
 
-ssize_t	ft_printf_void_ptr_hex(void *ptr);
+int	ft_write_void_ptr_hex(void *ptr);
 
 int		ft_printf(const char *fmt, ...);
 

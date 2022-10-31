@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_arg.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 17:40:07 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/10/31 18:07:44 by xrodrigu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int	ft_padding(t_ftprintf arg_data, int n, char p)
@@ -46,7 +58,7 @@ static int	ft_printf_str(t_ftprintf arg_data)
 	if (arg_data->width > ft_strlen(str) && !arg_data->dash)
 		if (0 > ft_padding(arg_data, arg_data->width - ft_strlen(str), ' '))
 			return (-1);
-	if (0 > ft_printf_str(arg_data, str))
+	if (0 > ft_write_str(arg_data, str))
 		return (-1);
 	if (arg_data->width > ft_strlen(str) && arg_data->dash)
 		if (0 > ft_padding(arg_data, arg_data->width - ft_strlen(str), ' '))
@@ -54,15 +66,30 @@ static int	ft_printf_str(t_ftprintf arg_data)
 	return (0);
 }
 
+static int	ft_printf_void_ptr_hex(t_ftprintf arg_data)
+{
+	void	*ptr;
+
+	ptr = va_arg(arg_data->args, void *);
+	if (arg_data->width > (int)ft_unsignedlen_base((size_t)ptr, HEX_LC) && !arg_data->dash)
+		if (0 > ft_padding(arg_data, arg_data->width - (int)ft_unsignedlen_base((size_t)ptr, HEX_LC)))
+			return (-1);
+	if (0 > ft_write_void_ptr_hex(arg_data, ptr))
+		return (-1);
+	if (arg_data->width > (int)ft_unsignedlen_base((size_t)ptr, HEX_LC) && arg_data->dash)
+		if (0 > ft_padding(arg_data, arg_data->width - (int)ft_unsignedlen_base((size_t)ptr, HEX_LC)))
+			return (-1);
+	return (0);
+}
+
+static int	ft_printf_int(t_ftprintf arg_data)
+{
+	int	n;
+
+	n = va_arg(arg_data->args, int);
 
 
-
-
-
-
-
-
-
+}
 
 
 
@@ -79,7 +106,10 @@ int	ft_printf_arg(t_ftprintf arg_data, const char fmt)
 	else if (fmt == 's')
 		temp_n = ft_printf_str(arg_data);
 	else if (fmt == 'p')
-		temp_n = ft_printf_void_ptr_hex(arg_data)
+		temp_n = ft_printf_void_ptr_hex(arg_data);
+	else if (fmt == 'd' || fmt == 'i')
+		temp_n = ft_printf_int(arg_data);
+	else if
 		
 			
 	si todo bien retorna 0;
