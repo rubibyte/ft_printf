@@ -17,7 +17,6 @@
 # include <limits.h>
 # include "libft/include/libft.h"
 
-# define UINT           unsigned int
 # define HEX_UC			(char *)"0123456789ABCDEF"
 # define HEX_LC			(char *)"0123456789abcdef"
 # define DEC            (char *)"0123456789"

@@ -32,11 +32,11 @@ static int	ft_check_type(va_list args, const char *fmt, int i)
 	else if (fmt[i] == 'd' || fmt[i] == 'i')
 		n_wr += ft_printf_int(va_arg(args, int));
 	else if (fmt[i] == 'u')
-		n_wr += ft_printf_uint_base(va_arg(args, UINT), DEC);
+		n_wr += ft_printf_uint_base(va_arg(args, unsigned int), DEC);
 	else if (fmt[i] == 'x')
-		n_wr += ft_printf_uint_base(va_arg(args, UINT), HEX_LC);
+		n_wr += ft_printf_uint_base(va_arg(args, unsigned int), HEX_LC);
 	else if (fmt[i] == 'X')
-		n_wr += ft_printf_uint_base(va_arg(args, UINT), HEX_UC);
+		n_wr += ft_printf_uint_base(va_arg(args, unsigned int), HEX_UC);
 	return ((int)n_wr);
 }
 
@@ -47,11 +47,11 @@ int	ft_printf(const char *fmt, ...)
 	int		temp_n;
 	va_list	args;
 
-	i = 0;
+	i = -1;
 	n_wr = 0;
 	temp_n = 0;
 	va_start(args, fmt);
-	while (fmt[i] != '\0')
+	while (fmt[++i])
 	{
 		if (fmt[i] == '%')
 			temp_n = ft_check_type(args, fmt, ++i);
@@ -60,7 +60,6 @@ int	ft_printf(const char *fmt, ...)
 		if (temp_n < 0)
 			return (temp_n);
 		n_wr += temp_n;
-		i++;
 	}
 	va_end(args);
 	return (n_wr);

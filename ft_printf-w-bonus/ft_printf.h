@@ -17,10 +17,25 @@
 # include <limits.h>
 # include "libft/include/libft.h"
 
-# define UINT           unsigned int
 # define HEX_UC			(char *)"0123456789ABCDEF"
 # define HEX_LC			(char *)"0123456789abcdef"
 # define DEC            (char *)"0123456789"
+
+typedef struct	s_ftprintf
+{
+	va_list	args;
+	int		sharp;
+	int		zero;
+	int		dash;
+	int		space;
+	int		sign;
+	int		width;
+	int		dot;
+	int		asterisk;
+	int		precision;
+	int		percentage;
+	int		n_printed;	
+}				t_ftprintf;
 
 char	*ft_unsignedtoa_base(size_t n, char *base);
 
