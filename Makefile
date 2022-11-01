@@ -40,7 +40,7 @@ LINE = ${PURPLE}═════════════════════�
 
 SRC = ft_unsignedtoa_base.c		ft_nbrlen_base.c		ft_printf.c	\
 	  ft_printf_int.c			ft_printf_str.c 		ft_printf_uint_base.c \
-	  ft_printf_void_ptr_hex.c  ft_uitoa_base.c 
+	  ft_printf_void_ptr_hex.c 
 
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))

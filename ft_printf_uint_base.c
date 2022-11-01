@@ -17,7 +17,7 @@ ssize_t	ft_printf_uint_base(unsigned int n, char *base)
 	char	*num_str;
 	ssize_t	n_wr;
 
-	num_str = ft_uitoa_base(n, base);
+	num_str = ft_unsignedtoa_base(n, base);
 	if (!num_str)
 		return (-1);
 	n_wr = ft_printf_str(num_str);

@@ -25,8 +25,6 @@ char	*ft_unsignedtoa_base(size_t n, char *base);
 
 size_t	ft_nbrlen_base(long n, char *base);
 
-char	*ft_uitoa_base(unsigned int n, char *base);
-
 ssize_t	ft_printf_int(int n);
 
 ssize_t	ft_printf_str(char *str);
