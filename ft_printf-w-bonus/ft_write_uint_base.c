@@ -12,15 +12,17 @@
 
 #include "ft_printf.h"
 
-ssize_t	ft_printf_uint_base(unsigned int n, char *base)
+int	ft_write_uint_base(t_ftprintf *arg_data, unsigned int n, char *base)
 {
 	char	*num_str;
-	ssize_t	n_wr;
 
 	num_str = ft_uitoa_base(n, base);
 	if (!num_str)
 		return (-1);
-	n_wr = ft_printf_str(num_str);
-	free(num_str);
-	return (n_wr);
+	if (0 > ft_write_str(arg_data, num_str))
+	{
+		free(num_str);
+		return (-1);
+	}
+	return (0);
 }

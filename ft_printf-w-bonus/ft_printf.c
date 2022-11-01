@@ -29,34 +29,22 @@ static t_ftprintf	*ft_init_arg_data(t_ftprintf *arg_data)
 	return (arg_data);
 }
 
-static int	ft_check_type(va_list args, const char *fmt, int i)
+static void	ft_reset_arg_data(t_ftprintf *arg_data)
 {
-	char	c;
-	ssize_t	n_wr;
-
-	n_wr = 0;
-	if (fmt[i] == 'c')
-	{
-		c = va_arg(args, int);
-		n_wr += write(STDOUT_FILENO, &c, 1);
-	}
-	else if (fmt[i] == '%')
-		n_wr += write(1, "%", 1);
-	else if (fmt[i] == 's')
-		n_wr += ft_printf_str(va_arg(args, char *));
-	else if (fmt[i] == 'p')
-		n_wr += ft_printf_void_ptr_hex(va_arg(args, void *));
-	else if (fmt[i] == 'd' || fmt[i] == 'i')
-		n_wr += ft_printf_int(va_arg(args, int));
-	else if (fmt[i] == 'u')
-		n_wr += ft_printf_uint_base(va_arg(args, unsigned int), DEC);
-	else if (fmt[i] == 'x')
-		n_wr += ft_printf_uint_base(va_arg(args, unsigned int), HEX_LC);
-	else if (fmt[i] == 'X')
-		n_wr += ft_printf_uint_base(va_arg(args, unsigned int), HEX_UC);
-	return ((int)n_wr);
+	arg_data->sharp = 0;
+	arg_data->zero = 0;
+	arg_data->dash = 0;
+	arg_data->space = 0;
+	arg_data->sign = 0;
+	arg_data->width = 0;
+	arg_data->dot = 0;
+	arg_data->asterisk = 0;
+	arg_data->precision = 0;
+	arg_data->percentage = 0;
 }
 
+//create macro for FLAGS
+//use DEC where necessary
 static int	ft_check_valid_format(const char *fmt, int i)
 {
 	if (ft_there_is_flag(fmt, i))
@@ -69,7 +57,7 @@ static int	ft_check_valid_format(const char *fmt, int i)
 		while (fmt[i++] && ft_strchr("0123456789", fmt[i]))
 			continue;
 	}
-	if (ft_there_is_precision_dot(fmt, i))
+	if (ft_there_is_precision(fmt, i))
 		while (fmt[++i] && ft_strchr("0123456789", fmt[i]))
 			continue;
 	if (!ft_there_is_type(fmt, i))
@@ -77,26 +65,16 @@ static int	ft_check_valid_format(const char *fmt, int i)
 	return (1);
 }
 
-static int	ft_check_arg(t_ftprintf arg_data, const char *fmt, int i)
+static int	ft_check_arg(t_ftprintf *arg_data, const char *fmt, int i)
 {
 	if (!ft_check_valid_format(fmt, i))
 		return (i - 1);
 	i = ft_fetch_arg_data(arg_data, fmt, i);
-	ft_printf_arg(arg_data, fmt[i]);
+	if (0 > ft_printf_arg(arg_data, fmt[i]))
+		return (-1);
+	ft_reset_arg_data(arg_data);
 	return (i);
 }
-
-check valid format
-check flags
-check width
-check precision
-
-check arg data
-check flags
-check width value
-check precision value
-
-print arg
 
 int	ft_printf(const char *fmt, ...)
 {

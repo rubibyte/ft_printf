@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_write_str(t_ftprintf arg_data, char *str)
+int	ft_write_str(t_ftprintf *arg_data, char *str)
 {
 	int		i;
 	int	temp_n;

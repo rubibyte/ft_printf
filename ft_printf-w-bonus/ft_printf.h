@@ -37,6 +37,8 @@ typedef struct	s_ftprintf
 	int		n_printed;	
 }				t_ftprintf;
 
+
+// actualizar headers de las funciones
 char	*ft_unsignedtoa_base(size_t n, char *base);
 
 size_t	ft_nbrlen_base(long n, char *base);

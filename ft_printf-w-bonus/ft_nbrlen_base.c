@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+//poner en libft
 size_t	ft_nbrlen_base(long n, char *base)
 {
 	size_t	size;

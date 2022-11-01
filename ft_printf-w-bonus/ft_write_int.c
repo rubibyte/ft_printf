@@ -12,18 +12,17 @@
 
 #include "ft_printf.h"
 
-int	ft_write_int(t_ftprintf arg_data, int n)
+int	ft_write_int(t_ftprintf *arg_data, int n)
 {
 	char	*num_str;
-	int		n_wr;
 
 	num_str = ft_itoa(n);
 	if (!num_str)
 		return (-1);
-	n_wr = ft_printf_str(num_str);
-	free(num_str);
-	if (0 > n_wr)
+	if (0 > ft_write_str(arg_data, num_str))
+	{
+		free(num_str);
 		return (-1);
-	arg_data->n_printed += n_wr;
+	}
 	return (0);
 }

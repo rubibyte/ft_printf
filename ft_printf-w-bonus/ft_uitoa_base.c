@@ -12,6 +12,8 @@
 
 #include "ft_printf.h"
 
+//poner en libft
+
 char	*ft_uitoa_base(unsigned int n, char *base)
 {
 	char	*num_str;

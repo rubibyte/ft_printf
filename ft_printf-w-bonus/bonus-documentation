@@ -82,6 +82,7 @@ that indicates the minimum number of digits to appear. Left adding zeros if prec
 If just '.' is given the precision is taken to be 0.
 If the precision is less than the number length, the precision is taken to be 0.
 If a negative precision is given, precision is omitted.
+'0' flag is ignored with precision.
 
 -------
 Flags to handle for every conversion:
