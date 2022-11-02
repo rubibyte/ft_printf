@@ -16,6 +16,7 @@ static int	ft_fetch_flags(t_ftprintf *arg_data, const char *fmt, int i)
 			arg_data->zero = 1;
 		i++;
 	}
+	//printf("after flags char is %c\n", fmt[i]);
 	return (i);
 }
 
@@ -30,16 +31,22 @@ static int ft_fetch_width(t_ftprintf *arg_data, const char *fmt, int i)
 		i++;
 	}
 	arg_data->width = width;
+	//printf("after width char is %c\n", fmt[i]);
 	return (i);
 }
 
 static int	ft_fetch_precision(t_ftprintf *arg_data, const char *fmt, int i)
 {
 	int	precision;
+	//printf("in precision char is %c", fmt[i]);
 	if (fmt[i] != '.')
 		return (i);
-	if (fmt[i + 1] == '*')
+	i++;
+	if (fmt[i] == '*')
+	{
 		arg_data->asterisk = 1;
+		return (i++);
+	}
 	else
 	{
 		precision = 0;

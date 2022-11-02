@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:08:01 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/02 13:00:48 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/02 16:17:41 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static int	ft_padd_width(t_ftprintf *arg_data, int n)
 		width = arg_data->width - (int)ft_nbrlen(n);
 	else
 		width = arg_data->width - precision;
+	//printf("\npadd width returned: %i\n", width);
 	return (width);
 }
 
@@ -64,7 +65,7 @@ int	ft_printf_int(t_ftprintf *arg_data)
 	if (n < 0)
 		if (0 > ft_write_str(arg_data, "-"))
 			return (-1);
-	if (!arg_data->dash && !arg_data->zero && ft_valid_width(arg_data, n))
+	if (!arg_data->dash && arg_data->zero && ft_valid_width(arg_data, n))
 		if (0 > ft_padding(arg_data, ft_padd_width(arg_data, n), '0'))
 			return (-1);
 	if (arg_data->precision > (int)ft_nbrlen(ft_absval(n)))

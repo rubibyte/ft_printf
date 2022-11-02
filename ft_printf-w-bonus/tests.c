@@ -34,8 +34,8 @@ int	main(void)
 	ft_printf("-#^F^-;Q-+%i6%i%X?mb[~%X*U%p\n", -1810922349, -919744804, -937701303, -487893641, (void *)-7615005968928980294);
 	printf("\n-#^F^-;Q-+%i6%i%X?mb[~%X*U%p", -1810922349, -919744804, -937701303, -487893641, (void *)-7615005968928980294);*/
 
-	b = printf("\n\nprintf: %#20.15X onespace\n", 12345678);
-	a = ft_printf("\n\nft_printf: %#20.15X onespace\n", 12345678);
+	b = printf("\n\nprintf: %#20.15i onespace\n", 12345678);
+	a = ft_printf("\n\nprintf: %#20.15i onespace\n", 12345678);
 
 	printf("\n\nreturns\nprintf: %i\nft_printf: %i", b, a);
 

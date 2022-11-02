@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/02 00:43:23 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/02 16:17:47 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	ft_check_valid_format(const char *fmt, int i)
 			continue;
 	}
 	if (ft_there_is_precision(fmt, i))
-		while (fmt[++i] && ft_strchr("0123456789", fmt[i]))
+		while (fmt[++i] && ft_strchr("0123456789", fmt[i])) //falta casuistica asterisk 
 			continue;
 	if (!ft_there_is_type(fmt, i))
 		return (0);
@@ -69,10 +69,14 @@ static int	ft_check_arg(t_ftprintf *arg_data, const char *fmt, int i)
 {
 	//printf("\nchar = %c\n", fmt[i]);
 	if (!ft_check_valid_format(fmt, i))
+	{
+		//printf("format not valid");
 		return (i - 1);
-	//printf("\nchar = %i\n", i);
+	}
+	//printf("\nchar = %c indx: %i\n", fmt[i], i);
 	i = ft_fetch_arg_data(arg_data, fmt, i);
-	//printf("\nchar = %i\n", i);
+	//printf("\nchar = %c indx: %i\n", fmt[i], i);
+	//printf("\nprecision = %i\n", arg_data->precision);
 	if (0 > ft_printf_arg(arg_data, fmt[i]))
 		return (-1);
 	//printf("\n\nasterisk = %i\n", arg_data->asterisk);
