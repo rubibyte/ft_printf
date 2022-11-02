@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 23:51:20 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/24 04:00:57 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/02 00:04:14 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define TRUE 	(int)1
 # define FALSE	(int)0
 
-int		ft_absval(int n);
+long	ft_absval(long n);      //cambiada, originalmente int
 
 int		ft_atoi(const char *str);
 
@@ -37,7 +37,7 @@ int		ft_isdigit(int c);
 
 int		ft_isprint(int c);
 
-char	*ft_itoa(int n);
+char	*ft_itoa(long n);       //cambiada (hacer otra que sea ltoa y devolver esta al valor original)
 
 void	*ft_memchr(const void *s, int c, size_t n);
 

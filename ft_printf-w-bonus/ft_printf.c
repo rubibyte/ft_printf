@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/31 18:07:39 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/02 00:43:23 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,17 @@ static int	ft_check_valid_format(const char *fmt, int i)
 
 static int	ft_check_arg(t_ftprintf *arg_data, const char *fmt, int i)
 {
+	//printf("\nchar = %c\n", fmt[i]);
 	if (!ft_check_valid_format(fmt, i))
 		return (i - 1);
+	//printf("\nchar = %i\n", i);
 	i = ft_fetch_arg_data(arg_data, fmt, i);
+	//printf("\nchar = %i\n", i);
 	if (0 > ft_printf_arg(arg_data, fmt[i]))
 		return (-1);
 	ft_reset_arg_data(arg_data);
+	//printf("\nchar = %i\n", i);
+	//printf("llega al final i char = %c", fmt[i]);
 	return (i);
 }
 
@@ -83,7 +88,7 @@ int	ft_printf(const char *fmt, ...)
 	int		temp_n;
 	t_ftprintf	*arg_data;
 
-	i = -1;
+	i = 0;
 	total_printed = 0;
 	temp_n = 0;
 	arg_data = (t_ftprintf *)malloc(sizeof(t_ftprintf));
@@ -91,18 +96,41 @@ int	ft_printf(const char *fmt, ...)
 		return (-1);
 	arg_data = ft_init_arg_data(arg_data);
 	va_start(arg_data->args, fmt);
-	while (fmt[++i])
+	while (fmt[i])
 	{
+		if (fmt[i] != '%')
+		{
+			temp_n = (int)write(STDOUT_FILENO, &fmt[i], 1);
+			if (0 > temp_n)
+			{
+				free(arg_data);
+				return (-1);
+			}
+			total_printed += temp_n;
+		}
+		else
+		{
+			i = ft_check_arg(arg_data, fmt, i + 1);
+		}
+		i++;
+	}
+
+/*		printf("\n1i:%i\n", i);
 		if (fmt[i] == '%')
-			i = ft_check_arg(arg_data, fmt, ++i);
+		{
+			//printf("fmt[i] == %%");
+			i = ft_check_arg(arg_data, fmt, i + 1);
+		}
+		printf("\n2i:%i\n", i);
 		if (i < 0)
 			return (i);
 		temp_n = (int)write(STDOUT_FILENO, &fmt[i], 1);
 		if (temp_n < 0)
 			return (temp_n);
 		total_printed += temp_n;
+		i++;
 		
-	}
+	}*/
 	va_end(arg_data->args);
 	total_printed += arg_data->n_printed;
 	free(arg_data);

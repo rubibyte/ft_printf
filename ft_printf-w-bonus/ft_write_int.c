@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_int.c                                    :+:      :+:    :+:   */
+/*   ft_write_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:06:30 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/18 18:38:34 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/02 00:06:27 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_write_int(t_ftprintf *arg_data, int n)
+int	ft_write_int(t_ftprintf *arg_data, long n)
 {
 	char	*num_str;
 
@@ -24,5 +24,6 @@ int	ft_write_int(t_ftprintf *arg_data, int n)
 		free(num_str);
 		return (-1);
 	}
+	free(num_str);
 	return (0);
 }

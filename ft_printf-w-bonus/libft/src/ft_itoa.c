@@ -6,13 +6,13 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:35:30 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/20 19:50:28 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/01 23:59:38 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long n)
 {
 	char	*num_str;
 	size_t	len;

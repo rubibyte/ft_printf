@@ -6,7 +6,7 @@
 #    By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 19:40:11 by xrodrigu          #+#    #+#              #
-#    Updated: 2022/10/25 22:02:25 by xrodrigu         ###   ########.fr        #
+#    Updated: 2022/11/01 20:33:07 by xrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,13 @@ LINE = ${PURPLE}═════════════════════�
 #╚═══════════════╝
 
 
-SRC = ft_unsignedtoa_base.c		ft_nbrlen_base.c		ft_printf.c	\
-	  ft_printf_int.c			ft_printf_str.c 		ft_printf_uint_base.c \
-	  ft_printf_void_ptr_hex.c  ft_uitoa_base.c 
-
+SRC = ft_fetch_arg_data.c	ft_printf.c			ft_printf_arg.c \
+	  ft_printf_char.c		ft_printf_int.c 	ft_printf_str.c	\
+	  ft_printf_unsigned_int.c 					ft_printf_unsigned_int_hex.c \
+	  ft_printf_void_ptr_hex.c 					ft_there_is.c \
+	  ft_unsignedtoa_base.c	ft_write_int.c		ft_write_padding.c \
+	  ft_write_str.c		ft_write_uint_base.c \
+	  ft_write_void_ptr_hex.c 					precision_utils.c
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 

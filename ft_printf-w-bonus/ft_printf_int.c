@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_int.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/01 20:08:01 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/11/01 20:43:33 by xrodrigu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_printf_int(t_ftprintf *arg_data)
@@ -15,17 +27,17 @@ int	ft_printf_int(t_ftprintf *arg_data)
 	if (arg_data->sign && n > -1)
 		if (0 > ft_write_str(arg_data, "+"))
 			return (-1);
-	else if (arg_data->space && !arg_data->sign)
+	if (arg_data->space && !arg_data->sign)
 		if (0 > ft_write_str(arg_data, " "))
 			return (-1);
 	if (n < 0)
 		if (0 > ft_write_str(arg_data, "-"))
 			return (-1);
-	if ((arg_data->width > (int)ft_nbrlen(n) && arg_data->zero && !arg_data->dash && !arg_data->precision)
+	if ((arg_data->width > (int)ft_nbrlen(n) && arg_data->zero && !arg_data->dash && !arg_data->precision))
 		if (0 > ft_padding(arg_data, arg_data->width - (int)ft_nbrlen(n), '0'))
 			return (-1);
-	if (arg_data->precision > ft_nbrlen(ft_absval(n)))
-		if (0 > ft_check_precision_int(arg_data, ft_absval(n)))
+	if (arg_data->precision > (int)ft_nbrlen(ft_absval(n)))
+		if (0 > ft_check_precision(arg_data, ft_absval(n)))
 			return (-1);
 	if (0 > ft_write_int(arg_data, ft_absval(n)))
 			return (-1);

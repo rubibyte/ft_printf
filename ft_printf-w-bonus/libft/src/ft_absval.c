@@ -6,13 +6,13 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 19:47:22 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/20 19:49:05 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/01 23:55:49 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_absval(int n)
+long	ft_absval(long n)
 {
 	if (n < 0)
 		n = -n;

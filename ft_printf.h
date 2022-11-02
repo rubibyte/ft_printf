@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <limits.h>
 # include "libft/include/libft.h"
 
 # define HEX_UC			(char *)"0123456789ABCDEF"
