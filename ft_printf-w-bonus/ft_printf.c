@@ -75,6 +75,7 @@ static int	ft_check_arg(t_ftprintf *arg_data, const char *fmt, int i)
 	//printf("\nchar = %i\n", i);
 	if (0 > ft_printf_arg(arg_data, fmt[i]))
 		return (-1);
+	//printf("\n\nasterisk = %i\n", arg_data->asterisk);
 	ft_reset_arg_data(arg_data);
 	//printf("\nchar = %i\n", i);
 	//printf("llega al final i char = %c", fmt[i]);
@@ -133,6 +134,7 @@ int	ft_printf(const char *fmt, ...)
 	}*/
 	va_end(arg_data->args);
 	total_printed += arg_data->n_printed;
+	//printf("\n\nasterisk = %i\n", arg_data->asterisk);
 	free(arg_data);
 	return (total_printed);
 }

@@ -36,7 +36,8 @@ static int ft_fetch_width(t_ftprintf *arg_data, const char *fmt, int i)
 static int	ft_fetch_precision(t_ftprintf *arg_data, const char *fmt, int i)
 {
 	int	precision;
-
+	if (fmt[i] != '.')
+		return (i);
 	if (fmt[i + 1] == '*')
 		arg_data->asterisk = 1;
 	else

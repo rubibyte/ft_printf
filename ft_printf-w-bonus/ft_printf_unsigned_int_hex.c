@@ -21,7 +21,7 @@ int ft_printf_unsigned_int_hex(t_ftprintf *arg_data, const char fmt)
 	if (arg_data->width > (int)ft_unsignedlen_base(n, HEX_LC) && arg_data->width > arg_data->precision && !arg_data->dash && !arg_data->zero)
 		if (0 > ft_padding(arg_data, arg_data->width - (int)ft_unsignedlen_base(n, HEX_LC), ' '))
 			return (-1);
-	if (arg_data->sharp)
+	if (arg_data->sharp && n > 0)
 	{
 		if (fmt == 'x')
 		{
