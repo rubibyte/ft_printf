@@ -19,7 +19,7 @@ int	main(void)
 	int	a;
 	int	b;
 
-	a = ft_printf("%x*{S5-~w9qa%i:kF~@w Zs7%XI_Ld5|7%u3Ve\vRv%d %xrrWW %pPc<\n)QLDVH", -93254154, 1054114744, 1392463042, 869711628, -503733586, -742939970, (void *)8298585573070304080);
+	/*a = ft_printf("%x*{S5-~w9qa%i:kF~@w Zs7%XI_Ld5|7%u3Ve\vRv%d %xrrWW %pPc<\n)QLDVH", -93254154, 1054114744, 1392463042, 869711628, -503733586, -742939970, (void *)8298585573070304080);
 	printf("\n\n");
 	b = printf("%x*{S5-~w9qa%i:kF~@w Zs7%XI_Ld5|7%u3Ve\vRv%d %xrrWW %pPc<\n)QLDVH", -93254154, 1054114744, 1392463042, 869711628, -503733586, -742939970, (void *)8298585573070304080);
 	printf("\n\nreturns\nprintf: %i\nft_printf: %i", b, a);
@@ -32,8 +32,14 @@ int	main(void)
 	printf("\n\nft: %i, p: %i\n\n", a, b);
 
 	ft_printf("-#^F^-;Q-+%i6%i%X?mb[~%X*U%p\n", -1810922349, -919744804, -937701303, -487893641, (void *)-7615005968928980294);
-	printf("\n-#^F^-;Q-+%i6%i%X?mb[~%X*U%p", -1810922349, -919744804, -937701303, -487893641, (void *)-7615005968928980294);
+	printf("\n-#^F^-;Q-+%i6%i%X?mb[~%X*U%p", -1810922349, -919744804, -937701303, -487893641, (void *)-7615005968928980294);*/
 
+	b = printf("\n\nprintf: %#20.15X onespace\n", 12345678);
+	a = ft_printf("\n\nft_printf: %#20.15X onespace\n", 12345678);
+
+	printf("\n\nreturns\nprintf: %i\nft_printf: %i", b, a);
+
+	
 	
 	return (0);
 }
