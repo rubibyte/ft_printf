@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:40:07 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/02 01:19:20 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/02 18:52:57 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ int	ft_printf_arg(t_ftprintf *arg_data, const char fmt)
 	//printf("arg %c\n", fmt);
 	ret = 0;
 	if (fmt == 'c' || fmt == '%')
-		ret += ft_printf_char(arg_data);
+		ret = ft_printf_char(arg_data);
 	else if (fmt == 's')
-		ret += ft_printf_str(arg_data);
+		ret = ft_printf_str(arg_data);
 	else if (fmt == 'p')
-		ret += ft_printf_void_ptr_hex(arg_data);
+		ret = ft_printf_void_ptr_hex(arg_data);
 	else if (fmt == 'd' || fmt == 'i')
-		ret += ft_printf_int(arg_data);
+		ret = ft_printf_int(arg_data);
 	else if (fmt == 'u')
-		ret += ft_printf_unsigned_int(arg_data);
+		ret = ft_printf_unsigned_int(arg_data);
 	else if (fmt == 'x' || fmt == 'X')
-		ret += ft_printf_unsigned_int_hex(arg_data, fmt);
+		ret = ft_printf_unsigned_int_hex(arg_data, fmt);
 	
 	return (ret);
 }

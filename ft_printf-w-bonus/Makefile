@@ -6,7 +6,7 @@
 #    By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 19:40:11 by xrodrigu          #+#    #+#              #
-#    Updated: 2022/11/01 20:33:07 by xrodrigu         ###   ########.fr        #
+#    Updated: 2022/11/02 19:14:26 by xrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,10 @@ $(NAME): $(OBJ)
 	@$(AR) $(NAME) $(OBJ)
 	@echo "${GREEN}Objects and dependencies created.${NC}"
 	@echo "${GREEN}Library created.${NC}"
+
+
+bonus: 
+	@$(MAKE) all
 
 
 clean:

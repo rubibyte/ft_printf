@@ -76,14 +76,20 @@ If the converted value has fewer characters than the field width, it will be pad
 on the left (or right, if the left-adjustment flag has been given).
 -------
 Precision
-'.' To indicate the minimum number of digits to appear for %i %d %u %x %X conversions. 
+'.' To indicate the minimum number of digits to appear for %i %d %u %x %X conversions or the maximum number of characters 
+to be printed from a string for %s conversions. 
 An optional decimal digit string in the following formats (e.g. int with precision 10): %.10i or %.*i, precision(int), int
 that indicates the minimum number of digits to appear. Left adding zeros if precision > conversion. 
 If just '.' is given the precision is taken to be 0.
 If the precision is less than the number length, the precision is taken to be 0.
 If a negative precision is given, precision is omitted.
+If precision is 0 and the number to print is 0, print nothing.
 '0' flag is ignored with precision.
 
+-------
+' ' and sign ('-' or '+') are part of width characters.
+
+' ' and sign ('-' or '+') are not part of precision characters.
 -------
 Flags to handle for every conversion:
 - ALL: Field Width, '-'

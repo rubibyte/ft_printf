@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:06:02 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/02 00:58:45 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/02 18:37:53 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_printf_char(t_ftprintf *arg_data)
 		c = '%';
 	else
 		c = va_arg(arg_data->args, int);
+	//printf("\nchar is: %c\n", c);
 	if (arg_data->width > 1 && !arg_data->dash)
 		if (0 > ft_padding(arg_data, arg_data->width - 1, ' '))
 			return (-1);

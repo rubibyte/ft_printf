@@ -42,6 +42,7 @@ static int	ft_fetch_precision(t_ftprintf *arg_data, const char *fmt, int i)
 	if (fmt[i] != '.')
 		return (i);
 	i++;
+	arg_data->dot = 1;
 	if (fmt[i] == '*')
 	{
 		arg_data->asterisk = 1;
@@ -55,7 +56,6 @@ static int	ft_fetch_precision(t_ftprintf *arg_data, const char *fmt, int i)
 			precision = precision * 10 + (fmt[i] - '0');
 			i++;
 		}
-		arg_data->dot = 1;
 		arg_data->precision = precision;
 	}
 	return (i);
