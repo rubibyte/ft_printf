@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:08:01 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/03 01:11:19 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:36:12 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,17 @@ static int	ft_padd_width(t_ftprintf *arg_data, int n)
 
 	/*if (n < 0 || arg_data->sign || (arg_data->space && n > -1))
 		width--;*/
+//exp
+	if ((n >= 0 && arg_data->sign) || (!arg_data->sign && arg_data->space && n >= 0))
+		width--;
+
 
 	
 
 
 	if (n == 0 && arg_data->dot && precision == 0)
 		n_len = 0;
-	if (n < 0 || arg_data->sign)
+	if (n < 0) //|| arg_data->sign)
 		precision++;
 	if (n_len > precision)
 		width += arg_data->width - n_len;

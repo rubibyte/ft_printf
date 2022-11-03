@@ -21,13 +21,55 @@ int	main(void)
 //resolver que espacio y signo sean parte de los caracteres de width y
 //que no lo sean de precision. 
 //Durante el proceso evitar que genere conflicto una cosa con la otra
-	
-	a = ft_printf("%+.5d onespace\n", -0);
-	b = printf("%+.5d onespace\n", -0);
+	printf("\n");
 
-	printf("\n\nreturns\nprintf: %i\nft_printf: %i", b, a);
+	a = ft_printf("% .5d onespace\n", -0);
+	b = printf("% .5d onespace\n", -0);
+	printf("\nreturns\nprintf: %i\nft_printf: %i\n\n\n", b, a);
 
-	
-	
+	a = ft_printf("% .5d onespace\n", 567);
+	b = printf("% .5d onespace\n", 567);
+	printf("\nreturns\nprintf: %i\nft_printf: %i\n\n\n", b, a);
+
+	a = ft_printf("% .5d onespace\n", -987);
+	b = printf("% .5d onespace\n", -987);
+	printf("\nreturns\nprintf: %i\nft_printf: %i\n\n\n", b, a);
+/////////////
+	a = ft_printf("% 5.10d onespace\n", -0);
+	b = printf("% 5.10d onespace\n", -0);
+	printf("\nreturns\nprintf: %i\nft_printf: %i\n\n\n", b, a);
+
+	a = ft_printf("% 5.10d onespace\n", 567);
+	b = printf("% 5.10d onespace\n", 567);
+	printf("\nreturns\nprintf: %i\nft_printf: %i\n\n\n", b, a);
+
+	a = ft_printf("% 5.10d onespace\n", 987);
+	b = printf("% 5.10d onespace\n", 987);
+	printf("\nreturns\nprintf: %i\nft_printf: %i\n\n\n", b, a);
+////////////
+	a = ft_printf("% 10.5d onespace\n", -0);
+	b = printf("% 10.5d onespace\n", -0);
+	printf("\nreturns\nprintf: %i\nft_printf: %i\n\n\n", b, a);
+
+	a = ft_printf("% 10.5d onespace\n", 567);
+	b = printf("% 10.5d onespace\n", 567);
+	printf("\nreturns\nprintf: %i\nft_printf: %i\n\n\n", b, a);
+
+	a = ft_printf("% 10.5d onespace\n", 987);
+	b = printf("% 10.5d onespace\n", 987);
+	printf("\nreturns\nprintf: %i\nft_printf: %i\n\n\n", b, a);
+///////////////
+	a = ft_printf("% .d onespace\n", -0);
+	b = printf("% .d onespace\n", -0);
+	printf("\nreturns\nprintf: %i\nft_printf: %i\n\n\n", b, a);
+
+	a = ft_printf("% .5d onespace\n", -0);
+	b = printf("% .5d onespace\n", -0);
+	printf("\nreturns\nprintf: %i\nft_printf: %i\n\n\n", b, a);
+
+	a = ft_printf("% 6.3d onespace\n", -8567);
+	b = printf("% 6.3d onespace\n", -8567);
+	printf("\nreturns\nprintf: %i\nft_printf: %i\n\n\n", b, a);
+		
 	return (0);
 }

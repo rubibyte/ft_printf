@@ -30,7 +30,7 @@ What is the flags' behaviour:
 ' ' (a space) A blank should be left before a positive number (or empty string) produced by a signed conversion.
 
 '+' A sign (+ or -) should always be placed before a number produced by a signed conversion.  By default, a sign 
-	is used only for negative numbers.  A +  overrides a space if both are used.
+	is used only for negative numbers.  A '+'  overrides a space if both are used.
 
 Field Width:
 	An  optional  decimal digit string (with nonzero first digit) specifying a minimum field width.  
@@ -87,12 +87,19 @@ If precision is 0 and the number to print is 0, print nothing.
 '0' flag is ignored with precision.
 
 -------
-' ' and sign ('-' or '+') are part of width characters.
+Expected behaviour between flags, precision and width:
 
-' ' and sign ('-' or '+') are not part of precision characters.
+- ' ' and sign ('-' or '+') are part of width characters.
+
+- ' ' and sign ('-' or '+') are not part of precision characters.
+
+- Precision characters are part of width characters.
+
 -------
 Flags to handle for every conversion:
 - ALL: Field Width, '-'
+
+- %s: '.'
 
 - %d %i: ' ', '+', '0', '.'
 
