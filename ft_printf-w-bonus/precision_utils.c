@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:15:06 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/02 16:18:01 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/03 23:49:36 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ void	ft_pull_precision_asterisk(t_ftprintf *arg_data)
 int	ft_check_precision(t_ftprintf *arg_data, long n)
 {
 	int	n_len;
-	
+
 	n_len = (int)ft_nbrlen(n);
-	//printf("\nprecision padding: %i\n", arg_data->precision - n_len);
 	if (arg_data->precision > n_len)
 		if (0 > ft_padding(arg_data, arg_data->precision - n_len, '0'))
 			return (-1);

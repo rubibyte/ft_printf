@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:08:59 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/03 18:47:27 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/03 21:59:34 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,16 @@ static int	ft_valid_width(t_ftprintf *arg_data, unsigned int n)
 		n_len += 2;
 		precision += 2;
 	}
-	if (arg_data->width > n_len && arg_data->width > precision)
-		return (1);
-	return (0);
+	return (arg_data->width > n_len && arg_data->width > precision);
 }
 
 static int	ft_padd_width(t_ftprintf *arg_data, unsigned int n)
 {
-	int	width;
 	int	n_len;
 	int	precision;
 
 	n_len = (int)ft_unsignedlen_base(n, HEX_LC);
-	//printf("\nn_len: %i\n", n_len);
 	precision = arg_data->precision;
-	width = 0;
 	if (n == 0 && arg_data->dot && arg_data->precision == 0)
 		n_len = 0;
 	if (arg_data->sharp && n != 0)
@@ -48,12 +43,9 @@ static int	ft_padd_width(t_ftprintf *arg_data, unsigned int n)
 		n_len += 2;
 		precision += 2;
 	}
-	if (n_len > precision)
-		width += arg_data->width - n_len;
-	else
-		width += arg_data->width - precision;
-	//printf("\n width: %i\n", width);
-	return (width);
+	if (precision > n_len)
+		n_len = precision;
+	return (arg_data->width - n_len);
 }
 
 static int	ft_check_sharp(t_ftprintf *arg_data, const char fmt, unsigned int n)
@@ -74,24 +66,8 @@ static int	ft_check_sharp(t_ftprintf *arg_data, const char fmt, unsigned int n)
 	return (0);
 }
 
-int ft_printf_unsigned_int_hex(t_ftprintf *arg_data, const char fmt)
+static int	ft_check_case(t_ftprintf *arg_data, const char fmt, unsigned int n)
 {
-	unsigned int	n;
-
-	ft_pull_precision_asterisk(arg_data);
-	if (arg_data->zero && arg_data->dot)
-		arg_data->zero = 0;
-	n = va_arg(arg_data->args, unsigned int);
-	if (!arg_data->dash && !arg_data->zero && ft_valid_width(arg_data, n))
-		if (0 > ft_padding(arg_data, ft_padd_width(arg_data, n), ' '))
-			return (-1);
-	if (0 > ft_check_sharp(arg_data, fmt, n))
-		return (-1);	
-	if (!arg_data->dash && arg_data->zero && ft_valid_width(arg_data, n))
-		if (0 > ft_padding(arg_data, ft_padd_width(arg_data, n), '0'))
-			return (-1);
-	if (0 > ft_check_precision_base(arg_data, n))
-		return (-1);
 	if (n == 0 && arg_data->dot && arg_data->precision == 0)
 	{
 		if (0 > ft_write_str(arg_data, ""))
@@ -106,6 +82,29 @@ int ft_printf_unsigned_int_hex(t_ftprintf *arg_data, const char fmt)
 			if (0 > ft_write_uint_base(arg_data, n, HEX_UC))
 				return (-1);
 	}
+	return (0);
+}
+
+int	ft_printf_unsigned_int_hex(t_ftprintf *arg_data, const char fmt)
+{
+	unsigned int	n;
+
+	ft_pull_precision_asterisk(arg_data);
+	if (arg_data->zero && arg_data->dot)
+		arg_data->zero = 0;
+	n = va_arg(arg_data->args, unsigned int);
+	if (!arg_data->dash && !arg_data->zero && ft_valid_width(arg_data, n))
+		if (0 > ft_padding(arg_data, ft_padd_width(arg_data, n), ' '))
+			return (-1);
+	if (0 > ft_check_sharp(arg_data, fmt, n))
+		return (-1);
+	if (!arg_data->dash && arg_data->zero && ft_valid_width(arg_data, n))
+		if (0 > ft_padding(arg_data, ft_padd_width(arg_data, n), '0'))
+			return (-1);
+	if (0 > ft_check_precision_base(arg_data, n))
+		return (-1);
+	if (0 > ft_check_case(arg_data, fmt, n))
+		return (-1);
 	if (arg_data->dash && ft_valid_width(arg_data, n))
 		if (0 > ft_padding(arg_data, ft_padd_width(arg_data, n), ' '))
 			return (-1);

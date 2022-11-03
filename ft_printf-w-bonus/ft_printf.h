@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:06:13 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/01 23:57:29 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/03 23:32:42 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 
 # define HEX_UC			(char *)"0123456789ABCDEF"
 # define HEX_LC			(char *)"0123456789abcdef"
-# define DEC            (char *)"0123456789"
+# define DEC			(char *)"0123456789"
 
-typedef struct	s_ftprintf
+typedef struct s_ftprintf
 {
 	va_list	args;
 	int8_t	sharp;
@@ -35,53 +35,58 @@ typedef struct	s_ftprintf
 	int8_t	asterisk;
 	int		precision;
 	int		percentage;
-	int		n_printed;	
+	int		n_printed;
 }				t_ftprintf;
 
-int	ft_fetch_arg_data(t_ftprintf *arg_data, const char *fmt, int i);
+int			ft_fetch_arg_data(t_ftprintf *arg_data, const char *fmt, int i);
 
-int	ft_printf_arg(t_ftprintf *arg_data, const char fmt);
+t_ftprintf	*ft_init_arg_data(t_ftprintf *arg_data);
 
-int	ft_printf_char(t_ftprintf *arg_data);
+void		ft_reset_arg_data(t_ftprintf *arg_data);
 
-int	ft_printf_int(t_ftprintf *arg_data);
+int			ft_printf_arg(t_ftprintf *arg_data, const char fmt);
 
-int	ft_printf_str(t_ftprintf *arg_data);
+int			ft_printf_char(t_ftprintf *arg_data);
 
-int ft_printf_unsigned_int_hex(t_ftprintf *arg_data, const char fmt);
+int			ft_printf_int(t_ftprintf *arg_data);
 
-int	ft_printf_unsigned_int(t_ftprintf *arg_data);
+int			ft_printf_str(t_ftprintf *arg_data);
 
-int	ft_printf_void_ptr_hex(t_ftprintf *arg_data);
+int			ft_printf_unsigned_int_hex(t_ftprintf *arg_data, const char fmt);
 
-int	ft_printf(const char *fmt, ...);
+int			ft_printf_unsigned_int(t_ftprintf *arg_data);
 
-int	ft_there_is_flag(const char *fmt, int i);
+int			ft_printf_void_ptr_hex(t_ftprintf *arg_data);
 
-int	ft_there_is_width(const char *fmt, int i);
+int			ft_printf(const char *fmt, ...);
 
-int	ft_there_is_precision(const char *fmt, int i);
+int			ft_there_is_flag(const char *fmt, int i);
 
-int	ft_there_is_type(const char *fmt, int i);
+int			ft_there_is_width(const char *fmt, int i);
 
-size_t	ft_unsignedlen_base(size_t n, char *base);
+int			ft_there_is_precision(const char *fmt, int i);
 
-char	*ft_unsignedtoa_base(size_t n, char *base);
+int			ft_there_is_type(const char *fmt, int i);
 
-int	ft_write_int(t_ftprintf *arg_data, long n);
+size_t		ft_unsignedlen_base(size_t n, char *base);
 
-int	ft_padding(t_ftprintf *arg_data, int n, char p);
+char		*ft_unsignedtoa_base(size_t n, char *base);
 
-int	ft_write_str(t_ftprintf *arg_data, char *str);
+int			ft_write_int(t_ftprintf *arg_data, long n);
 
-int	ft_write_uint_base(t_ftprintf *arg_data, unsigned int n, char *base);
+int			ft_padding(t_ftprintf *arg_data, int n, char p);
 
-int	ft_write_void_ptr_hex(t_ftprintf *arg_data, void *ptr);
+int			ft_write_str(t_ftprintf *arg_data, char *str);
 
-void	ft_pull_precision_asterisk(t_ftprintf *arg_data);
+int			ft_write_uint_base(t_ftprintf *arg_data,
+				unsigned int n, char *base);
 
-int	ft_check_precision(t_ftprintf *arg_data, long n);
+int			ft_write_void_ptr_hex(t_ftprintf *arg_data, void *ptr);
 
-int	ft_check_precision_base(t_ftprintf *arg_data, unsigned int n);
+void		ft_pull_precision_asterisk(t_ftprintf *arg_data);
+
+int			ft_check_precision(t_ftprintf *arg_data, long n);
+
+int			ft_check_precision_base(t_ftprintf *arg_data, unsigned int n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:40:07 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/02 18:52:57 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:24:49 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	ft_printf_arg(t_ftprintf *arg_data, const char fmt)
 {
 	int	ret;
 
-	//printf("arg %c\n", fmt);
 	ret = 0;
 	if (fmt == 'c' || fmt == '%')
 		ret = ft_printf_char(arg_data);
@@ -30,6 +29,5 @@ int	ft_printf_arg(t_ftprintf *arg_data, const char fmt)
 		ret = ft_printf_unsigned_int(arg_data);
 	else if (fmt == 'x' || fmt == 'X')
 		ret = ft_printf_unsigned_int_hex(arg_data, fmt);
-	
 	return (ret);
 }
