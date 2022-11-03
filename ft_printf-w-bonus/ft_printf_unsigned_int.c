@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:09:25 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/02 22:54:36 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:44:00 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	ft_valid_width(t_ftprintf *arg_data, unsigned int n)
 
 	n_len = (int)ft_nbrlen(n);
 	precision = arg_data->precision;
+	if (n == 0 && arg_data->dot && precision == 0)
+		n_len = 0;
 	if (arg_data->width > n_len && arg_data->width > precision)
 		return (1);
 	return (0);
@@ -27,14 +29,16 @@ static int	ft_valid_width(t_ftprintf *arg_data, unsigned int n)
 static int	ft_padd_width(t_ftprintf *arg_data, unsigned int n)
 {
 	int	width;
+	int	n_len;
 	int	precision;
 
 	width = 0;
+	n_len = (int)ft_nbrlen(n);
 	precision = arg_data->precision;
 	if (n == 0 && arg_data->dot && precision == 0)
-		width++;
-	if ((int)ft_nbrlen(n) > precision)
-		width += arg_data->width - (int)ft_nbrlen(n);
+		n_len = 0;
+	if (n_len > precision)
+		width += arg_data->width - n_len;
 	else
 		width += arg_data->width - precision;
 	return (width);

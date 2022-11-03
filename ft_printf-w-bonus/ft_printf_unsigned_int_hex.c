@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:08:59 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/02 22:54:47 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:47:27 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ static int	ft_valid_width(t_ftprintf *arg_data, unsigned int n)
 
 	n_len = (int)ft_unsignedlen_base(n, HEX_LC);
 	precision = arg_data->precision;
-	if (arg_data->sharp)
+	if (n == 0 && arg_data->dot && precision == 0)
+		n_len = 0;
+	if (arg_data->sharp && n != 0)
 	{
 		n_len += 2;
 		precision += 2;
@@ -36,19 +38,21 @@ static int	ft_padd_width(t_ftprintf *arg_data, unsigned int n)
 	int	precision;
 
 	n_len = (int)ft_unsignedlen_base(n, HEX_LC);
+	//printf("\nn_len: %i\n", n_len);
 	precision = arg_data->precision;
 	width = 0;
 	if (n == 0 && arg_data->dot && arg_data->precision == 0)
-		width++;
-	if (arg_data->sharp)
+		n_len = 0;
+	if (arg_data->sharp && n != 0)
 	{
 		n_len += 2;
 		precision += 2;
 	}
-	if ((int)ft_unsignedlen_base(n, HEX_LC) > precision)
-		width += arg_data->width - (int)ft_unsignedlen_base(n, HEX_LC);
+	if (n_len > precision)
+		width += arg_data->width - n_len;
 	else
 		width += arg_data->width - precision;
+	//printf("\n width: %i\n", width);
 	return (width);
 }
 
