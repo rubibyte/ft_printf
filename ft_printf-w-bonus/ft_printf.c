@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/02 19:40:40 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/03 13:38:53 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static int	ft_check_arg(t_ftprintf *arg_data, const char *fmt, int i)
 	//printf("\nchar = %c\n", fmt[i]);
 	if (!ft_check_valid_format(fmt, i))
 	{
-		printf("format not valid");
+		//printf("format not valid");
 		return (i - 1);
 	}
 	//printf("\nchar = %c indx: %i\n", fmt[i], i);
