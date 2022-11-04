@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 19:21:14 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/03 19:23:04 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/04 18:24:03 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	ft_fetch_precision(t_ftprintf *arg_data, const char *fmt, int i)
 	if (fmt[i] == '*')
 	{
 		arg_data->asterisk = 1;
-		return (i++);
+		return (i + 1);
 	}
 	else
 	{

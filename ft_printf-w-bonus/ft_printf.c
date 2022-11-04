@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/04 15:57:42 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/04 18:22:55 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ static int	ft_check_fmt(t_ftprintf *arg_data, const char *fmt, int i)
 			temp_n = (int)write(STDOUT_FILENO, &fmt[i], 1);
 			if (0 > temp_n)
 			{
+				va_end(arg_data->args);
 				free(arg_data);
-			//	va_end(arg_data->args);
 				return (-1);
 			}
 			arg_data->n_printed += temp_n;
