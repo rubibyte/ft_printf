@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ltoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_unsignedtoa_base.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 20:22:06 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/18 18:37:49 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/04 19:25:38 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-//poner en libft
-static size_t	ft_unsignedlen_base(size_t n, char *base)
+
+size_t	ft_unsignedlen_base(size_t n, char *base)
 {
 	size_t	size;
 
@@ -32,7 +32,7 @@ char	*ft_unsignedtoa_base(size_t n, char *base)
 	char	*num_str;
 	size_t	len;
 
-	len = ft_unsignedlen_base(n, base);
+	len = ft_unsignedlen_base((long)n, base);
 	num_str = (char *)malloc(len * sizeof(char) + 1);
 	if (!num_str)
 		return (NULL);

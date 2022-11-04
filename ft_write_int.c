@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
+/*   ft_write_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 20:12:05 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/20 19:46:06 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/10/02 23:06:30 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/11/04 21:23:24 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_nbrlen(long n)
+int	ft_write_int(t_ftprintf *arg_data, long n)
 {
-	size_t	size;
+	char	*num_str;
 
-	if (n == 0)
-		return (1);
-	size = 0;
-	if (n < 0)
-		size++;
-	while (n)
+	num_str = ft_ltoa(n);
+	if (!num_str)
+		return (-1);
+	if (0 > ft_write_str(arg_data, num_str))
 	{
-		size++;
-		n /= 10;
+		free(num_str);
+		return (-1);
 	}
-	return (size);
+	free(num_str);
+	return (0);
 }

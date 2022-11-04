@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_unsignedtoa_base.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 17:03:23 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/09/19 01:52:42 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/11/04 19:35:01 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/11/04 19:54:25 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_unsignedtoa_base(size_t n, char *base)
 {
-	size_t	size;
+	char	*num_str;
+	size_t	len;
 
-	size = 0;
-	while (s[size])
-		size++;
-	return (size);
+	len = ft_unsignedlen_base(n, base);
+	num_str = (char *)malloc(len * sizeof(char) + 1);
+	if (!num_str)
+		return (NULL);
+	num_str[len] = '\0';
+	if (n == 0)
+		num_str[0] = base[0];
+	while (n)
+	{
+		--len;
+		num_str[len] = base[n % ft_strlen(base)];
+		n /= ft_strlen(base);
+	}
+	return (num_str);
 }

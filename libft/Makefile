@@ -6,7 +6,7 @@
 #    By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/16 20:52:25 by xrodrigu          #+#    #+#              #
-#    Updated: 2022/10/24 03:54:08 by xrodrigu         ###   ########.fr        #
+#    Updated: 2022/11/04 19:48:51 by xrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,10 @@ SRC = ft_bzero.c		ft_isalpha.c	ft_isprint.c 	ft_memcpy.c \
 	  ft_strlcat.c 		ft_strncmp.c 	ft_tolower.c 	ft_substr.c \
 	  ft_putchar_fd.c	ft_putstr_fd.c 	ft_putendl_fd.c ft_putnbr_fd.c \
 	  ft_striteri.c		ft_strmapi.c 	ft_itoa.c 		ft_strjoin.c \
-	  ft_strtrim.c		ft_split.c		ft_absval.c		ft_nbrlen.c
+	  ft_strtrim.c		ft_split.c		ft_absval.c		ft_nbrlen.c \
+	  ft_ltoa.c			ft_nbrlen_base.c				ft_unsignedlen.c \
+	  ft_unsignedlen_base.c				ft_unsignedtoa.c \
+	  ft_unsignedtoa_base.c				ft_ltoa_base.c
 
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
@@ -62,7 +65,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(MAKEFILE)
 	@$(CC) $(CFLAGS) $(DEP_FLAGS) $(INCLUDE) -c $< -o $@
 	@mv $(patsubst %.o, %.d, $@) $(DEP_DIR)/
 
-all: 
+all:
 	@$(MAKE) $(NAME)
 
 
@@ -78,14 +81,14 @@ clean:
 	@echo "${GREEN}[LIBFT]->Dependencies directory ${RED}deleted${NC} ${GREEN}successfully.${NC}"
 
 
-fclean: 
+fclean:
 	@$(MAKE) clean
 	@$(RM) $(NAME)
 	@echo "${GREEN}[LIBFT]->All files cleaned!${NC}"
 
 
-re: 
-	@$(MAKE) fclean 
+re:
+	@$(MAKE) fclean
 	@$(MAKE) all
 
 

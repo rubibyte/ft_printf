@@ -6,7 +6,7 @@
 #    By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 19:40:11 by xrodrigu          #+#    #+#              #
-#    Updated: 2022/10/25 22:02:25 by xrodrigu         ###   ########.fr        #
+#    Updated: 2022/11/04 20:26:56 by xrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,13 @@ DEP_DIR = .dep
 
 #colors
 NC = \033[0m
-BLACK = \033[0;30m 
-RED = \033[0;31m          
+BLACK = \033[0;30m
+RED = \033[0;31m
 GREEN = \033[0;32m
 YELLOW = \033[0;33m
 BLUE = \033[0;34m
 PURPLE = \033[0;35m
-CYAN = \033[0;36m         
+CYAN = \033[0;36m
 WHITE = \033[0;37m
 
 LINE = ${PURPLE}═══════════════════════════${NC}
@@ -38,10 +38,13 @@ LINE = ${PURPLE}═════════════════════�
 #╚═══════════════╝
 
 
-SRC = ft_unsignedtoa_base.c		ft_nbrlen_base.c		ft_printf.c	\
-	  ft_printf_int.c			ft_printf_str.c 		ft_printf_uint_base.c \
-	  ft_printf_void_ptr_hex.c 
-
+SRC = ft_fetch_arg_data.c	ft_printf.c			ft_printf_arg.c \
+	  ft_printf_char.c		ft_printf_int.c 	ft_printf_str.c	\
+	  ft_printf_unsigned_int.c 					ft_printf_unsigned_int_hex.c \
+	  ft_printf_void_ptr_hex.c 					ft_there_is.c \
+	  ft_write_int.c		ft_write_padding.c	ft_write_str.c \
+	  ft_write_uint_base.c	ft_write_void_ptr_hex.c \
+	  precision_utils.c		ft_arg_data.c
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
@@ -87,6 +90,10 @@ $(NAME): $(OBJ)
 	@echo "${GREEN}Library created.${NC}"
 
 
+bonus:
+	@$(MAKE) all
+
+
 clean:
 #------------------------ libft cleaning ---------------------------------
 	@echo "                          ${PURPLE}╔═══════════════╗${NC}"
@@ -106,8 +113,8 @@ fclean:
 	@echo "${GREEN}All files cleaned!${NC}"
 
 
-re: 
-	@$(MAKE) fclean 
+re:
+	@$(MAKE) fclean
 	@$(MAKE) all
 
 
