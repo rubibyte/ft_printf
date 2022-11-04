@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:08:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/03 21:29:19 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:33:32 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_printf_str(t_ftprintf *arg_data)
 	str = va_arg(arg_data->args, char *);
 	if (!str)
 		str = (char *)"(null)";
-	if (ft_valid_width(arg_data, str) && !arg_data->dash)
+	if (!arg_data->dash && ft_valid_width(arg_data, str))
 		if (0 > ft_padding(arg_data, ft_padd_width(arg_data, str), ' '))
 			return (-1);
 	if (arg_data->dot)
@@ -69,7 +69,7 @@ int	ft_printf_str(t_ftprintf *arg_data)
 	if (!arg_data->dot)
 		if (0 > ft_write_str(arg_data, str))
 			return (-1);
-	if (ft_valid_width(arg_data, str) && arg_data->dash)
+	if (arg_data->dash && ft_valid_width(arg_data, str))
 		if (0 > ft_padding(arg_data, ft_padd_width(arg_data, str), ' '))
 			return (-1);
 	return (0);

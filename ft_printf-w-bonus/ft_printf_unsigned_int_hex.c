@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:08:59 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/03 21:59:34 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:38:39 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static int	ft_valid_width(t_ftprintf *arg_data, unsigned int n)
 
 	n_len = (int)ft_unsignedlen_base(n, HEX_LC);
 	precision = arg_data->precision;
-	if (n == 0 && arg_data->dot && precision == 0)
+	if (!n && arg_data->dot && !precision)
 		n_len = 0;
-	if (arg_data->sharp && n != 0)
+	if (arg_data->sharp && n)
 	{
 		n_len += 2;
 		precision += 2;
@@ -36,9 +36,9 @@ static int	ft_padd_width(t_ftprintf *arg_data, unsigned int n)
 
 	n_len = (int)ft_unsignedlen_base(n, HEX_LC);
 	precision = arg_data->precision;
-	if (n == 0 && arg_data->dot && arg_data->precision == 0)
+	if (!n && arg_data->dot && !precision)
 		n_len = 0;
-	if (arg_data->sharp && n != 0)
+	if (arg_data->sharp && n)
 	{
 		n_len += 2;
 		precision += 2;
@@ -50,7 +50,7 @@ static int	ft_padd_width(t_ftprintf *arg_data, unsigned int n)
 
 static int	ft_check_sharp(t_ftprintf *arg_data, const char fmt, unsigned int n)
 {
-	if (arg_data->sharp && n > 0)
+	if (arg_data->sharp && n)
 	{
 		if (fmt == 'x')
 		{
@@ -68,7 +68,7 @@ static int	ft_check_sharp(t_ftprintf *arg_data, const char fmt, unsigned int n)
 
 static int	ft_check_case(t_ftprintf *arg_data, const char fmt, unsigned int n)
 {
-	if (n == 0 && arg_data->dot && arg_data->precision == 0)
+	if (!n && arg_data->dot && !arg_data->precision)
 	{
 		if (0 > ft_write_str(arg_data, ""))
 			return (-1);

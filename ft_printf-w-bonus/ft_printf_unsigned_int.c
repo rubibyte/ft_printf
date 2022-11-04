@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:09:25 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/03 22:07:28 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:42:04 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_valid_width(t_ftprintf *arg_data, unsigned int n)
 
 	n_len = (int)ft_nbrlen(n);
 	precision = arg_data->precision;
-	if (n == 0 && arg_data->dot && precision == 0)
+	if (!n && arg_data->dot && !precision)
 		n_len = 0;
 	return (arg_data->width > n_len && arg_data->width > precision);
 }
@@ -31,7 +31,7 @@ static int	ft_padd_width(t_ftprintf *arg_data, unsigned int n)
 
 	n_len = (int)ft_nbrlen(n);
 	precision = arg_data->precision;
-	if (n == 0 && arg_data->dot && precision == 0)
+	if (!n && arg_data->dot && !precision)
 		n_len = 0;
 	if (precision > n_len)
 		n_len = precision;
@@ -40,7 +40,7 @@ static int	ft_padd_width(t_ftprintf *arg_data, unsigned int n)
 
 static int	ft_check_unsigned_int(t_ftprintf *arg_data, unsigned int n)
 {
-	if (n == 0 && arg_data->dot && arg_data->precision == 0)
+	if (!n && arg_data->dot && !arg_data->precision)
 	{
 		if (0 > ft_write_str(arg_data, ""))
 			return (-1);
