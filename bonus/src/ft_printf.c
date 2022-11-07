@@ -6,30 +6,40 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/04 18:22:55 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/07 20:02:11 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_check_valid_format(const char *fmt, int i)
+static t_ftprintf	*ft_init_arg_data(t_ftprintf *arg_data)
 {
-	if (ft_there_is_flag(fmt, i))
-		while (fmt[i] && ft_strchr("# +-0", fmt[i]))
-			i++;
-	if (ft_there_is_width(fmt, i))
-		while (fmt[i] && ft_strchr("0123456789", fmt[i]))
-			i++;
-	if (ft_there_is_precision(fmt, i))
-	{
-		i++;
-		if (fmt[i] == '*')
-			i++;
-		else
-			while (fmt[i] && ft_strchr("0123456789", fmt[i]))
-				i++;
-	}
-	return (ft_there_is_type(fmt, i));
+	arg_data->sharp = 0;
+	arg_data->zero = 0;
+	arg_data->dash = 0;
+	arg_data->space = 0;
+	arg_data->sign = 0;
+	arg_data->width = 0;
+	arg_data->dot = 0;
+	arg_data->asterisk = 0;
+	arg_data->precision = 0;
+	arg_data->percentage = 0;
+	arg_data->n_printed = 0;
+	return (arg_data);
+}
+
+static void	ft_reset_arg_data(t_ftprintf *arg_data)
+{
+	arg_data->sharp = 0;
+	arg_data->zero = 0;
+	arg_data->dash = 0;
+	arg_data->space = 0;
+	arg_data->sign = 0;
+	arg_data->width = 0;
+	arg_data->dot = 0;
+	arg_data->asterisk = 0;
+	arg_data->precision = 0;
+	arg_data->percentage = 0;
 }
 
 static int	ft_check_arg(t_ftprintf *arg_data, const char *fmt, int i)

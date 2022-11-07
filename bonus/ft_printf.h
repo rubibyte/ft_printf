@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:06:13 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/04 21:24:42 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/07 20:02:43 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,9 @@ typedef struct s_ftprintf
 	int		n_printed;
 }				t_ftprintf;
 
+int			ft_check_valid_format(const char *fmt, int i);
+
 int			ft_fetch_arg_data(t_ftprintf *arg_data, const char *fmt, int i);
-
-t_ftprintf	*ft_init_arg_data(t_ftprintf *arg_data);
-
-void		ft_reset_arg_data(t_ftprintf *arg_data);
 
 int			ft_printf_arg(t_ftprintf *arg_data, const char fmt);
 
@@ -57,14 +55,6 @@ int			ft_printf_unsigned_int(t_ftprintf *arg_data);
 int			ft_printf_void_ptr_hex(t_ftprintf *arg_data);
 
 int			ft_printf(const char *fmt, ...);
-
-int			ft_there_is_flag(const char *fmt, int i);
-
-int			ft_there_is_width(const char *fmt, int i);
-
-int			ft_there_is_precision(const char *fmt, int i);
-
-int			ft_there_is_type(const char *fmt, int i);
 
 int			ft_write_int(t_ftprintf *arg_data, long n);
 
