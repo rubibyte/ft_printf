@@ -6,16 +6,18 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/10/18 21:46:17 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/07 21:17:09 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdarg.h>
 #include "ft_printf.h"
+#include "ft_printf_utils.h"
 
 static int	ft_check_type(va_list args, const char fmt)
 {
 	char	c;
-	
+
 	if (fmt == 'c')
 	{
 		c = va_arg(args, int);
@@ -62,6 +64,7 @@ static int	ft_check_fmt(va_list args, const char *fmt)
 
 int	ft_printf(const char *fmt, ...)
 {
+	int		bytes_printed;
 	va_list	args;
 
 	va_start(args, fmt);
