@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write_void_ptr_hex.c                            :+:      :+:    :+:   */
+/*   ft_write_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 19:21:02 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/03 23:45:51 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/10/02 23:06:30 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/11/08 00:08:59 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_utils_bonus.h"
 
-int	ft_write_void_ptr_hex(t_ftprintf *arg_data, void *ptr)
+int	ft_write_int(t_ftprintf *arg_data, long n)
 {
 	char	*num_str;
 
-	if (0 > ft_write_str(arg_data, "0x"))
-		return (-1);
-	num_str = ft_unsignedtoa_base((size_t)ptr, HEX_LC);
+	num_str = ft_ltoa(n);
 	if (!num_str)
 		return (-1);
 	if (0 > ft_write_str(arg_data, num_str))

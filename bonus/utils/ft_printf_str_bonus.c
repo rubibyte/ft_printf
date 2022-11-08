@@ -6,11 +6,11 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:08:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/04 15:33:32 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/08 00:08:13 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_utils_bonus.h"
 
 static int	ft_write_str_max_len(t_ftprintf *arg_data, char *str, int max_len)
 {

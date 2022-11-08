@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write_int.c                                     :+:      :+:    :+:   */
+/*   ft_write_uint_base.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 23:06:30 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/04 21:23:24 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/10/05 20:49:01 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/11/08 00:09:24 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_utils_bonus.h"
 
-int	ft_write_int(t_ftprintf *arg_data, long n)
+int	ft_write_uint_base(t_ftprintf *arg_data, unsigned int n, char *base)
 {
 	char	*num_str;
 
-	num_str = ft_ltoa(n);
+	num_str = ft_unsignedtoa_base(n, base);
 	if (!num_str)
 		return (-1);
 	if (0 > ft_write_str(arg_data, num_str))

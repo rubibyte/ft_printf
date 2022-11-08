@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write_str.c                                     :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 23:02:24 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/03 23:42:30 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/10/07 21:06:13 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/11/07 23:42:34 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_write_str(t_ftprintf *arg_data, char *str)
-{
-	int	i;
-	int	temp_n;
+int			ft_printf(const char *fmt, ...);
 
-	i = -1;
-	while (str[++i])
-	{
-		temp_n = (int)write(STDOUT_FILENO, &str[i], 1);
-		if (0 > temp_n)
-			return (-1);
-		arg_data->n_printed += temp_n;
-	}
-	return (0);
-}
+#endif

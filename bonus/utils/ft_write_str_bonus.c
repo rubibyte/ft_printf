@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write_padding.c                                 :+:      :+:    :+:   */
+/*   ft_write_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 20:13:53 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/04 15:48:15 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/10/02 23:02:24 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/11/08 00:09:17 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_utils_bonus.h"
 
-int	ft_padding(t_ftprintf *arg_data, int n, char p)
+int	ft_write_str(t_ftprintf *arg_data, char *str)
 {
 	int	i;
 	int	temp_n;
 
 	i = -1;
-	while (++i < n)
+	while (str[++i])
 	{
-		temp_n = (int)write(STDOUT_FILENO, &p, 1);
+		temp_n = (int)write(STDOUT_FILENO, &str[i], 1);
 		if (0 > temp_n)
 			return (-1);
 		arg_data->n_printed += temp_n;

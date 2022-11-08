@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_utils_bonus.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 21:06:13 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/07 20:02:43 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/11/07 23:35:59 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/11/08 01:56:36 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_PRINTF_UTILS_BONUS_H
+# define FT_PRINTF_UTILS_BONUS_H
 
 # include <stdarg.h>
-# include "libft/include/libft.h"
+# include "libft.h"
 
 # define HEX_UC			(char *)"0123456789ABCDEF"
 # define HEX_LC			(char *)"0123456789abcdef"
@@ -36,9 +36,15 @@ typedef struct s_ftprintf
 	int		n_printed;
 }				t_ftprintf;
 
+int			ft_check_fmt(t_ftprintf *arg_data, const char *fmt, int i);
+
 int			ft_check_valid_format(const char *fmt, int i);
 
 int			ft_fetch_arg_data(t_ftprintf *arg_data, const char *fmt, int i);
+
+t_ftprintf	*ft_init_arg_data(t_ftprintf *arg_data);
+
+void		ft_reset_arg_data(t_ftprintf *arg_data);
 
 int			ft_printf_arg(t_ftprintf *arg_data, const char fmt);
 
@@ -53,8 +59,6 @@ int			ft_printf_unsigned_int_hex(t_ftprintf *arg_data, const char fmt);
 int			ft_printf_unsigned_int(t_ftprintf *arg_data);
 
 int			ft_printf_void_ptr_hex(t_ftprintf *arg_data);
-
-int			ft_printf(const char *fmt, ...);
 
 int			ft_write_int(t_ftprintf *arg_data, long n);
 

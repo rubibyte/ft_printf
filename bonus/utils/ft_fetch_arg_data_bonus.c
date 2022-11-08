@@ -6,11 +6,11 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 19:21:14 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/04 18:24:03 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/08 00:07:35 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_utils_bonus.h"
 
 static int	ft_fetch_flags(t_ftprintf *arg_data, const char *fmt, int i)
 {
