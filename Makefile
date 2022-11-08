@@ -49,23 +49,23 @@ UTL = 	utils/ft_printf_int.c				utils/ft_printf_str.c \
 BNS_SRC = bonus/src/ft_printf_bonus.c
 
 BNS_UTL = bonus/utils/ft_arg_data_bonus.c \
-		  bonus/utils/ft_printf_arg_bonus.c \
-		  bonus/utils/ft_printf_unsigned_int_bonus.c \
-		  bonus/utils/ft_write_int_bonus.c \
-		  bonus/utils/ft_write_void_ptr_hex_bonus.c \
 		  bonus/utils/ft_check_format_bonus.c \
-		  bonus/utils/ft_printf_char_bonus.c \
-		  bonus/utils/ft_printf_unsigned_int_hex_bonus.c \
-		  bonus/utils/ft_write_padding_bonus.c \
-		  bonus/utils/ft_precision_utils_bonus.c \
 		  bonus/utils/ft_check_valid_format_bonus.c \
-		  bonus/utils/ft_printf_int_bonus.c \
-		  bonus/utils/ft_printf_void_ptr_hex_bonus.c \
-		  bonus/utils/ft_write_str_bonus.c \
 		  bonus/utils/ft_fetch_arg_data_bonus.c \
+		  bonus/utils/ft_precision_utils_bonus.c \
+		  bonus/utils/ft_printf_arg_bonus.c \
+		  bonus/utils/ft_printf_char_bonus.c \
+		  bonus/utils/ft_printf_int_bonus.c \
 		  bonus/utils/ft_printf_str_bonus.c \
+		  bonus/utils/ft_printf_unsigned_int_bonus.c \
+		  bonus/utils/ft_printf_unsigned_int_hex_bonus.c \
+		  bonus/utils/ft_printf_void_ptr_hex_bonus.c \
 		  bonus/utils/ft_unsignedtoa_base_bonus.c \
-		  bonus/utils/ft_write_uint_base_bonus.c
+		  bonus/utils/ft_write_int_bonus.c \
+		  bonus/utils/ft_write_padding_bonus.c \
+		  bonus/utils/ft_write_str_bonus.c \
+		  bonus/utils/ft_write_uint_base_bonus.c \
+		  bonus/utils/ft_write_void_ptr_hex_bonus.c
 
 
 OBJ_SRC = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
