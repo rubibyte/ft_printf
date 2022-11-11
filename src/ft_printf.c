@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/07 23:55:21 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/11 05:19:17 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static int	ft_check_fmt(va_list args, const char *fmt)
 	int	i;
 	int	temp_n;
 	int	bytes_printed;
-
 
 	i = -1;
 	bytes_printed = 0;
