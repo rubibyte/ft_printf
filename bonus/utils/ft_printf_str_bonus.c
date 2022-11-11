@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:08:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/11 19:44:15 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/11 20:09:24 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_write_str_max_len(t_ftprintf *arg_data, char *str, int max_len)
 		temp_n = (int)write(STDOUT_FILENO, &str[i], 1);
 		if (0 > temp_n)
 			return (-1);
-		arg_data->n_printed += temp_n;
+		arg_data->bytes_printed += temp_n;
 	}
 	return (0);
 }

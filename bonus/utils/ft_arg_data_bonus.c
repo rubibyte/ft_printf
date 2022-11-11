@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arg_data.c                                      :+:      :+:    :+:   */
+/*   ft_arg_data_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 23:58:56 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/08 00:00:09 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/11 20:10:28 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_ftprintf	*ft_init_arg_data(t_ftprintf *arg_data)
 	arg_data->asterisk = 0;
 	arg_data->precision = 0;
 	arg_data->percentage = 0;
-	arg_data->n_printed = 0;
+	arg_data->bytes_printed = 0;
 	return (arg_data);
 }
 

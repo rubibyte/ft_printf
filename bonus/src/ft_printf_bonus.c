@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/11 19:42:24 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/11 20:07:51 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_printf(const char *fmt, ...)
 	if (0 > ft_check_fmt(arg_data, fmt, -1))
 		return (-1);
 	va_end(arg_data->args);
-	bytes_printed = arg_data->n_printed;
+	bytes_printed = arg_data->bytes_printed;
 	free(arg_data);
 	return (bytes_printed);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write_padding.c                                 :+:      :+:    :+:   */
+/*   ft_write_padding_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:13:53 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/08 00:09:08 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/11 20:08:38 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_padding(t_ftprintf *arg_data, int n, char p)
 		temp_n = (int)write(STDOUT_FILENO, &p, 1);
 		if (0 > temp_n)
 			return (-1);
-		arg_data->n_printed += temp_n;
+		arg_data->bytes_printed += temp_n;
 	}
 	return (0);
 }
