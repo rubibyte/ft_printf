@@ -6,7 +6,7 @@
 #    By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 19:40:11 by xrodrigu          #+#    #+#              #
-#    Updated: 2022/11/08 02:42:12 by xrodrigu         ###   ########.fr        #
+#    Updated: 2022/11/11 19:55:01 by xrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,6 @@ BNS_UTL = bonus/utils/ft_arg_data_bonus.c \
 		  bonus/utils/ft_printf_unsigned_int_bonus.c \
 		  bonus/utils/ft_printf_unsigned_int_hex_bonus.c \
 		  bonus/utils/ft_printf_void_ptr_hex_bonus.c \
-		  bonus/utils/ft_unsignedtoa_base_bonus.c \
 		  bonus/utils/ft_write_int_bonus.c \
 		  bonus/utils/ft_write_padding_bonus.c \
 		  bonus/utils/ft_write_str_bonus.c \

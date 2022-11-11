@@ -6,12 +6,10 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/08 01:56:49 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/11 19:42:24 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdarg.h>
-#include "ft_printf_bonus.h"   //necesario?? hay que poner siempre el header al que pertenece la funcion??
 #include "ft_printf_utils_bonus.h"
 
 int	ft_printf(const char *fmt, ...)

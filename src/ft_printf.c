@@ -6,12 +6,11 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/11 05:19:17 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/11 19:12:35 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
-#include "ft_printf.h" //necesario????? hay que poner siempre el header al que pertenece la funcion aunque no aporte nada??
 #include "ft_printf_utils.h"
 
 static int	ft_check_type(va_list args, const char fmt)
