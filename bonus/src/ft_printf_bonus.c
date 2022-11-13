@@ -6,10 +6,11 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/11 20:07:51 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/13 18:43:16 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf_bonus.h"
 #include "ft_printf_utils_bonus.h"
 
 int	ft_printf(const char *fmt, ...)
