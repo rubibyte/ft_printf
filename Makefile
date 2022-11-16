@@ -85,6 +85,12 @@ RM = rm -f
 
 RM_DIR = rm -rf
 
+PULL = git pull
+
+GSU = git submodule update
+
+GSU_FLAGS = --remote --merge --recursive
+
 
 $(OBJ_DIR)/%.o: %.c $(MAKEFILE)
 	@mkdir -p $(dir $@) $(dir $(subst $(OBJ_DIR)/, $(DEP_DIR)/, $@))
@@ -127,6 +133,11 @@ re:
 	@$(MAKE) all
 
 
+update:
+	@$(PULL)
+	@$(GSU) $(GSU_FLAGS)
+
+
 -include $(DEPS)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re update
