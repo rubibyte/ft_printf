@@ -5,29 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 19:21:02 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/07 21:15:09 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/11/01 20:09:50 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/11/16 21:30:56 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_utils.h"
 
-int	ft_printf_void_ptr_hex(void *ptr)
+int	ft_printf_void_ptr_hex(t_ftprintf *arg_data)
 {
-	char	*num_str;
-	int		temp_n;
-	int		bytes_printed;
+	void	*ptr;
+	int		ptr_len;
 
-	bytes_printed = ft_printf_str("0x");
-	if (0 > bytes_printed)
-		return (bytes_printed);
-	num_str = ft_unsignedtoa_base((size_t)ptr, HEX_LC);
-	if (!num_str)
+	ptr = va_arg(arg_data->args, void *);
+	ptr_len = (int)ft_unsignedlen_base((size_t)ptr, HEX_LC) + 2;
+	if (arg_data->width > ptr_len && !arg_data->dash)
+		if (0 > ft_padding(arg_data, arg_data->width - ptr_len, ' '))
+			return (-1);
+	if (0 > ft_write_void_ptr_hex(arg_data, ptr))
 		return (-1);
-	temp_n = ft_printf_str(num_str);
-	free(num_str);
-	if (0 > temp_n)
-		return (-1);
-	bytes_printed += temp_n;
-	return (bytes_printed);
+	if (arg_data->width > ptr_len && arg_data->dash)
+		if (0 > ft_padding(arg_data, arg_data->width - ptr_len, ' '))
+			return (-1);
+	return (0);
 }

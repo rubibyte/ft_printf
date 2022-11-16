@@ -6,13 +6,13 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:06:13 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/07 23:21:42 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/16 21:26:23 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-int	ft_printf(const char *fmt, ...);
+int			ft_printf(const char *fmt, ...);
 
 #endif

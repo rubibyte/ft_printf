@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write_uint_base.c                               :+:      :+:    :+:   */
+/*   ft_write_padding.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 20:49:01 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/08 00:09:24 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/11/01 20:13:53 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/11/16 21:31:07 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_utils_bonus.h"
+#include "ft_printf_utils.h"
 
-int	ft_write_uint_base(t_ftprintf *arg_data, unsigned int n, char *base)
+int	ft_padding(t_ftprintf *arg_data, int n, char p)
 {
-	char	*num_str;
+	int	i;
+	int	temp_n;
 
-	num_str = ft_unsignedtoa_base(n, base);
-	if (!num_str)
-		return (-1);
-	if (0 > ft_write_str(arg_data, num_str))
+	i = -1;
+	while (++i < n)
 	{
-		free(num_str);
-		return (-1);
+		temp_n = (int)write(STDOUT_FILENO, &p, 1);
+		if (0 > temp_n)
+			return (-1);
+		arg_data->bytes_printed += temp_n;
 	}
-	free(num_str);
 	return (0);
 }

@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_uint_base.c                              :+:      :+:    :+:   */
+/*   ft_write_void_ptr_hex.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 20:49:01 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/07 21:15:02 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/10/03 19:21:02 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/11/16 21:31:25 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_utils.h"
 
-int	ft_printf_uint_base(unsigned int n, char *base)
+int	ft_write_void_ptr_hex(t_ftprintf *arg_data, void *ptr)
 {
 	char	*num_str;
-	int		bytes_printed;
 
-	num_str = ft_unsignedtoa_base(n, base);
+	if (0 > ft_write_str(arg_data, "0x"))
+		return (-1);
+	num_str = ft_unsignedtoa_base((size_t)ptr, HEX_LC);
 	if (!num_str)
 		return (-1);
-	bytes_printed = ft_printf_str(num_str);
+	if (0 > ft_write_str(arg_data, num_str))
+	{
+		free(num_str);
+		return (-1);
+	}
 	free(num_str);
-	return (bytes_printed);
+	return (0);
 }

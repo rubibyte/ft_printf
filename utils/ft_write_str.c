@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write_str_bonus.c                               :+:      :+:    :+:   */
+/*   ft_write_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:02:24 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/11 20:08:25 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/16 21:31:12 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_utils_bonus.h"
+#include "ft_printf_utils.h"
 
 int	ft_write_str(t_ftprintf *arg_data, char *str)
 {

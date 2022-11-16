@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_format_bonus.c                            :+:      :+:    :+:   */
+/*   ft_check_format.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 00:03:26 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/15 22:06:11 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/16 21:29:55 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_utils_bonus.h"
+#include "ft_printf_utils.h"
 
 static int	ft_check_arg(t_ftprintf *arg_data, const char *fmt, int i)
 {

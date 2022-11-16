@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_write_uint_base.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 23:19:35 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/13 18:43:16 by xrodrigu         ###   ########.fr       */
+/*   Created: 2022/10/05 20:49:01 by xrodrigu          #+#    #+#             */
+/*   Updated: 2022/11/16 21:31:18 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_bonus.h"
-#include "ft_printf_utils_bonus.h"
+#include "ft_printf_utils.h"
 
-int	ft_printf(const char *fmt, ...)
+int	ft_write_uint_base(t_ftprintf *arg_data, unsigned int n, char *base)
 {
-	int			bytes_printed;
-	t_ftprintf	*arg_data;
+	char	*num_str;
 
-	arg_data = (t_ftprintf *)malloc(sizeof(t_ftprintf));
-	if (!arg_data)
+	num_str = ft_unsignedtoa_base(n, base);
+	if (!num_str)
 		return (-1);
-	arg_data = ft_init_arg_data(arg_data);
-	va_start(arg_data->args, fmt);
-	if (0 > ft_check_fmt(arg_data, fmt, -1))
+	if (0 > ft_write_str(arg_data, num_str))
+	{
+		free(num_str);
 		return (-1);
-	va_end(arg_data->args);
-	bytes_printed = arg_data->bytes_printed;
-	free(arg_data);
-	return (bytes_printed);
+	}
+	free(num_str);
+	return (0);
 }
