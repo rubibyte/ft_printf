@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 00:03:26 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/11 20:10:16 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/15 22:06:11 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_check_fmt(t_ftprintf *arg_data, const char *fmt, int i)
 			}
 			arg_data->bytes_printed += temp_n;
 		}
-		if (fmt[i] == '%')
+		else
 			i = ft_check_arg(arg_data, fmt, i + 1);
 		if (0 > i)
 		{

@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 23:35:59 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/11 20:07:13 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/11/15 22:02:59 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_ftprintf
 	int8_t	dot;
 	int8_t	asterisk;
 	int		precision;
-	int		percentage;
+	int8_t	percentage;
 	int		bytes_printed;
 }				t_ftprintf;
 

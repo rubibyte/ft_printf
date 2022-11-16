@@ -6,7 +6,7 @@
 #    By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 19:40:11 by xrodrigu          #+#    #+#              #
-#    Updated: 2022/11/11 19:55:01 by xrodrigu         ###   ########.fr        #
+#    Updated: 2022/11/16 16:21:07 by xrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,58 +30,56 @@ DEP_DIR = .dep
 
 
 #colors
-NC = \033[0m
-BLACK = \033[0;30m
-RED = \033[0;31m
-GREEN = \033[0;32m
-YELLOW = \033[0;33m
-BLUE = \033[0;34m
-PURPLE = \033[0;35m
-CYAN = \033[0;36m
-WHITE = \033[0;37m
+DEL_LINE =  \033[2K
+NC =		\033[0m
+BLACK = 	\033[0;30m
+RED = 		\033[0;31m
+GREEN = 	\033[0;32m
+YELLOW = 	\033[0;33m
+BLUE = 		\033[0;34m
+PURPLE = 	\033[0;35m
+CYAN =	 	\033[0;36m
+WHITE = 	\033[0;37m
 
 
-SRC = 	src/ft_printf.c
+SRC = 	ft_printf.c
 
-UTL = 	utils/ft_printf_int.c				utils/ft_printf_str.c \
-	  	utils/ft_printf_uint_base.c			utils/ft_printf_void_ptr_hex.c
+UTL = 	ft_printf_int.c			ft_printf_str.c \
+	  	ft_printf_uint_base.c	ft_printf_void_ptr_hex.c
 
-BNS_SRC = bonus/src/ft_printf_bonus.c
+BNS_SRC = ft_printf_bonus.c
 
-BNS_UTL = bonus/utils/ft_arg_data_bonus.c \
-		  bonus/utils/ft_check_format_bonus.c \
-		  bonus/utils/ft_check_valid_format_bonus.c \
-		  bonus/utils/ft_fetch_arg_data_bonus.c \
-		  bonus/utils/ft_precision_utils_bonus.c \
-		  bonus/utils/ft_printf_arg_bonus.c \
-		  bonus/utils/ft_printf_char_bonus.c \
-		  bonus/utils/ft_printf_int_bonus.c \
-		  bonus/utils/ft_printf_str_bonus.c \
-		  bonus/utils/ft_printf_unsigned_int_bonus.c \
-		  bonus/utils/ft_printf_unsigned_int_hex_bonus.c \
-		  bonus/utils/ft_printf_void_ptr_hex_bonus.c \
-		  bonus/utils/ft_write_int_bonus.c \
-		  bonus/utils/ft_write_padding_bonus.c \
-		  bonus/utils/ft_write_str_bonus.c \
-		  bonus/utils/ft_write_uint_base_bonus.c \
-		  bonus/utils/ft_write_void_ptr_hex_bonus.c
+BNS_UTL = ft_arg_data_bonus.c \
+		  ft_check_format_bonus.c \
+		  ft_check_valid_format_bonus.c \
+		  ft_fetch_arg_data_bonus.c \
+		  ft_precision_utils_bonus.c \
+		  ft_printf_arg_bonus.c \
+		  ft_printf_char_bonus.c \
+		  ft_printf_int_bonus.c \
+		  ft_printf_str_bonus.c \
+		  ft_printf_unsigned_int_bonus.c \
+		  ft_printf_unsigned_int_hex_bonus.c \
+		  ft_printf_void_ptr_hex_bonus.c \
+		  ft_write_int_bonus.c \
+		  ft_write_padding_bonus.c \
+		  ft_write_str_bonus.c \
+		  ft_write_uint_base_bonus.c \
+		  ft_write_void_ptr_hex_bonus.c
 
 
-OBJ_SRC = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+SRCS += $(addprefix $(SRC_DIR)/, $(SRC))
+SRCS += $(addprefix $(UTL_DIR)/, $(UTL))
 
-DEP_SRC = $(addprefix $(DEP_DIR)/, $(SRC:.c=.d))
+BNS_SRCS += $(addprefix $(BNS_DIR)/$(SRC_DIR)/, $(BNS_SRC))
+BNS_SRCS += $(addprefix $(BNS_DIR)/$(UTL_DIR)/, $(BNS_UTL))
 
-OBJ_UTL = $(addprefix $(OBJ_DIR)/, $(UTL:.c=.o))
+OBJ_SRCS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRCS))))
 
-DEP_UTL = $(addprefix $(DEP_DIR)/, $(UTL:.c=.d))
+OBJ_BNS_SRCS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(BNS_SRCS))))
 
-OBJ_BNS_SRC = $(addprefix $(OBJ_DIR)/, $(BNS_SRC:.c=.o))
-
-DEP_BNS_SRC = $(addprefix $(DEP_DIR)/, $(BNS_SRC:.c=.d))
-
-OBJ_BNS_UTL = $(addprefix $(OBJ_DIR)/, $(BNS_UTL:.c=.o))
-
-DEP_BNS_UTL = $(addprefix $(DEP_DIR)/, $(BNS_UTL:.c=.d))
+DEPS += $(addprefix $(DEP_DIR)/, $(addsuffix .d, $(basename $(SRCS))))
+DEPS += $(addprefix $(DEP_DIR)/, $(addsuffix .d, $(basename $(BNS_SRCS))))
 
 
 MAKEFILE = Makefile
@@ -99,24 +97,9 @@ RM = rm -f
 RM_DIR = rm -rf
 
 
-$(OBJ_DIR)/$(SRC_DIR)/%.o: $(SRC_DIR)/%.c $(MAKEFILE)
+$(OBJ_DIR)/%.o: %.c $(MAKEFILE)
 	@mkdir -p $(dir $@) $(dir $(subst $(OBJ_DIR)/, $(DEP_DIR)/, $@))
-	@$(CC) $(CFLAGS) $(DEP_FLAGS) $(INCLUDE) -c $< -o $@
-	@mv $(patsubst %.o, %.d, $@) $(dir $(subst $(OBJ_DIR)/, $(DEP_DIR)/, $@))
-
-$(OBJ_DIR)/$(UTL_DIR)/%.o: $(UTL_DIR)/%.c $(MAKEFILE)
-	@mkdir -p $(dir $@) $(dir $(subst $(OBJ_DIR)/, $(DEP_DIR)/, $@))
-	@$(CC) $(CFLAGS) $(DEP_FLAGS) $(INCLUDE) -c $< -o $@
-	@mv $(patsubst %.o, %.d, $@) $(dir $(subst $(OBJ_DIR)/, $(DEP_DIR)/, $@))
-
-
-$(OBJ_DIR)/$(BNS_DIR)/$(SRC_DIR)/%.o: $(BNS_DIR)/$(SRC_DIR)/%.c $(MAKEFILE)
-	@mkdir -p $(dir $@) $(dir $(subst $(OBJ_DIR)/, $(DEP_DIR)/, $@))
-	@$(CC) $(CFLAGS) $(DEP_FLAGS) $(INCLUDE) -c $< -o $@
-	@mv $(patsubst %.o, %.d, $@) $(dir $(subst $(OBJ_DIR)/, $(DEP_DIR)/, $@))
-
-$(OBJ_DIR)/$(BNS_DIR)/$(UTL_DIR)/%.o: $(BNS_DIR)/$(UTL_DIR)/%.c $(MAKEFILE)
-	@mkdir -p $(dir $@) $(dir $(subst $(OBJ_DIR)/, $(DEP_DIR)/, $@))
+	@printf "${DEL_LINE}\r${CYAN}[FT_PRINTF/FT_PRINTF_BONUS]compiling... $@${NC}"
 	@$(CC) $(CFLAGS) $(DEP_FLAGS) $(INCLUDE) -c $< -o $@
 	@mv $(patsubst %.o, %.d, $@) $(dir $(subst $(OBJ_DIR)/, $(DEP_DIR)/, $@))
 
@@ -125,24 +108,24 @@ all:
 	@$(MAKE) $(NAME)
 
 
-$(NAME): $(OBJ_SRC) $(OBJ_UTL)
+$(NAME): $(OBJ_SRCS)
 #---------------------- libft compilation --------------------------------
 	@$(MAKE) -C $(LIBFT_DIR)/
 	@cp $(LIBFT_DIR)/$(LIBFT) $(NAME)
 #-------------------------------------------------------------------------
-	@$(AR) $(NAME) $(OBJ_SRC) $(OBJ_UTL)
-	@printf "${GREEN}[FT_PRINTF]->Objects and dependencies created.${NC}\n"
+	@printf "${DEL_LINE}\r${GREEN}[FT_PRINTF]->Objects and dependencies compiled.${NC}\n"
+	@$(AR) $(NAME) $(OBJ_SRCS)
 	@printf "${GREEN}[FT_PRINTF]->Library created.${NC}\n"
 
 
-$(BONUS): $(OBJ_BNS_SRC) $(OBJ_BNS_UTL)
+$(BONUS): $(OBJ_BNS_SRCS)
 	@touch $@
 #---------------------- libft compilation --------------------------------
 	@$(MAKE) -C $(LIBFT_DIR)/
 	@cp $(LIBFT_DIR)/$(LIBFT) $(NAME)
 #-------------------------------------------------------------------------
-	@$(AR) $(NAME) $(OBJ_BNS_SRC) $(OBJ_BNS_UTL)
-	@printf "${GREEN}[FT_PRINTF_BONUS]->Objects and dependencies created.${NC}\n"
+	@printf "${DEL_LINE}\r${GREEN}[FT_PRINTF_BONUS]->Objects and dependencies compiled.${NC}\n"
+	@$(AR) $(NAME) $(OBJ_BNS_SRCS)
 	@printf "${GREEN}[FT_PRINTF_BONUS]->Library created.${NC}\n"
 
 
@@ -170,6 +153,6 @@ re:
 	@$(MAKE) all
 
 
--include $(DEP_SRC) $(DEP_UTL) $(DEP_BNS_SRC) $(DEP_BNS_UTL)
+-include $(DEPS)
 
 .PHONY: all clean fclean re bonus
