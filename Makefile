@@ -6,7 +6,7 @@
 #    By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 19:40:11 by xrodrigu          #+#    #+#              #
-#    Updated: 2022/11/16 22:12:25 by xrodrigu         ###   ########.fr        #
+#    Updated: 2022/11/17 18:55:35 by xrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,11 @@ SRC_DIR = src
 
 UTL_DIR = utils
 
+AUX_DIR = aux
+
 FT_PRINTF_DIR = ft_printf
 
-WRITE_DIR = write
-
-AUX_DIR = aux
+FT_WRITE_DIR = ft_write
 
 OBJ_DIR = .obj
 
@@ -56,7 +56,7 @@ FT_PRINTF_UTL = ft_printf_arg.c			ft_printf_char.c \
 				ft_printf_unsigned_int_hex.c \
 				ft_printf_void_ptr_hex.c
 
-WRITE_UTL = 	ft_write_int.c			ft_write_padding.c \
+FT_WRITE_UTL = 	ft_write_int.c			ft_write_padding.c \
 				ft_write_str.c			ft_write_uint_base.c \
 				ft_write_void_ptr_hex.c
 
@@ -64,7 +64,7 @@ WRITE_UTL = 	ft_write_int.c			ft_write_padding.c \
 SRCS += $(addprefix $(SRC_DIR)/, $(SRC))
 SRCS += $(addprefix $(UTL_DIR)/$(AUX_DIR)/, $(AUX_UTL))
 SRCS += $(addprefix $(UTL_DIR)/$(FT_PRINTF_DIR)/, $(FT_PRINTF_UTL))
-SRCS += $(addprefix $(UTL_DIR)/$(WRITE_DIR)/, $(WRITE_UTL))
+SRCS += $(addprefix $(UTL_DIR)/$(FT_WRITE_DIR)/, $(FT_WRITE_UTL))
 
 OBJ_SRCS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRCS))))
 
