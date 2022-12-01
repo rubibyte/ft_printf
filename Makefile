@@ -6,7 +6,7 @@
 #    By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 19:40:11 by xrodrigu          #+#    #+#              #
-#    Updated: 2022/11/17 18:55:35 by xrodrigu         ###   ########.fr        #
+#    Updated: 2022/12/01 19:04:53 by xrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ SRCS += $(addprefix $(UTL_DIR)/$(FT_WRITE_DIR)/, $(FT_WRITE_UTL))
 
 OBJ_SRCS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRCS))))
 
-DEPS += $(addprefix $(DEP_DIR)/, $(addsuffix .d, $(basename $(SRCS))))
+DEP = $(addprefix $(DEP_DIR)/, $(addsuffix .d, $(basename $(SRCS))))
 
 
 MAKEFILE = Makefile
@@ -138,6 +138,6 @@ update:
 	@$(GSU) $(GSU_FLAGS)
 
 
--include $(DEPS)
+-include $(DEP)
 
 .PHONY: all clean fclean re update
