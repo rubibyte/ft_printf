@@ -6,7 +6,7 @@
 #    By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 19:40:11 by xrodrigu          #+#    #+#              #
-#    Updated: 2022/12/01 19:04:53 by xrodrigu         ###   ########.fr        #
+#    Updated: 2022/12/01 19:28:30 by xrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -135,7 +135,9 @@ re:
 
 update:
 	@$(PULL)
+	@printf "${GREEN}[FT_PRINTF]->Directory is up to date.${NC}\n"
 	@$(GSU) $(GSU_FLAGS)
+	@printf "${GREEN}[FT_PRINTF]->Submodules are up to date.${NC}\n"
 
 
 -include $(DEP)
