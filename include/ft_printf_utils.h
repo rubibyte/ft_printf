@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 23:35:59 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/11/16 21:26:13 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2022/12/01 19:56:20 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdarg.h>
 # include "libft.h"
+# include "ft_printf.h"
 
 # define HEX_UC			(char *)"0123456789ABCDEF"
 # define HEX_LC			(char *)"0123456789abcdef"
