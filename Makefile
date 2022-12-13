@@ -6,7 +6,7 @@
 #    By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 19:40:11 by xrodrigu          #+#    #+#              #
-#    Updated: 2022/12/01 19:28:30 by xrodrigu         ###   ########.fr        #
+#    Updated: 2022/12/13 18:41:08 by xrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,7 +115,7 @@ $(NAME): $(OBJ_SRCS)
 
 clean:
 #------------------------ libft cleaning ---------------------------------
-	@$(MAKE) clean -C libft/
+	@$(MAKE) clean -C $(LIBFT_DIR)/
 #-------------------------------------------------------------------------
 	@$(RM_DIR) $(OBJ_DIR) $(DEP_DIR)
 	@printf "${GREEN}[FT_PRINTF]->Objects directory${RED}deleted${NC} ${GREEN}successfully.${NC}\n"
