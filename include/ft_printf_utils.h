@@ -6,7 +6,7 @@
 /*   By: xrodrigu <xrodrigu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 23:35:59 by xrodrigu          #+#    #+#             */
-/*   Updated: 2022/12/01 19:56:20 by xrodrigu         ###   ########.fr       */
+/*   Updated: 2023/11/06 20:25:28 by xrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include "libft.h"
 # include "ft_printf.h"
 
-# define HEX_UC			(char *)"0123456789ABCDEF"
-# define HEX_LC			(char *)"0123456789abcdef"
-# define DEC			(char *)"0123456789"
+# define HEX_UC			"0123456789ABCDEF"
+# define HEX_LC			"0123456789abcdef"
+# define DEC			"0123456789"
 
 typedef struct s_ftprintf
 {
